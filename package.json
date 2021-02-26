@@ -1,0 +1,21 @@
+{
+	"name": "agility-cms-nuxt-starter",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"dev": "nuxt",
+		"build": "nuxt build",
+		"generate": "nuxt generate",
+		"start": "nuxt start"
+	},
+	"dependencies": {
+		"@agility/agilitycms-nuxt-module": "^1.0.3",
+		"@nuxtjs/google-fonts": "^1.2.0",
+		"@nuxtjs/tailwindcss": "^3.4.2",
+		"@tailwindcss/typography": "^0.4.0",
+		"@tailwindcss/ui": "^0.7.2",
+		"nuxt": "^2.15.2",
+		"truncate-html": "^1.0.3"
+	}
+}
