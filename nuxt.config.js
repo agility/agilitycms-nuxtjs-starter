@@ -3,9 +3,9 @@
 export default {
 	target: 'static',
 	components:true,
-	build: {
-		transpile: ['@agility/agilitycms-nuxt-module']
-	},
+	// build: {
+	// 	transpile: ['@agility/agilitycms-nuxt-module']
+	// },
 	buildModules: [
 		"@agility/agilitycms-nuxt-module"
 	],
