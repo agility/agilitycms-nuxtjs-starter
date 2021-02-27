@@ -35,10 +35,10 @@ export default function (moduleOptions) {
 console.log("In agility module 1")
 
 	const { nuxt, options } = this
-	const env = options._env
+	//const env = options._env
 	const isPreview = options.dev
-	const guid = env.AGILITY_GUID
-	const apiKey = isPreview ? env.AGILITY_API_PREVIEW_KEY : env.AGILITY_API_FETCH_KEY
+	const guid = process.env.AGILITY_GUID
+	const apiKey = isPreview ? process.env.AGILITY_API_PREVIEW_KEY : process.env.AGILITY_API_FETCH_KEY
 
 	const agilityOptions = {
 		...moduleOptions,
@@ -97,10 +97,9 @@ console.log("Got sync client", syncClient)
 
 	nuxt.hook('listen', async (server, { host, port }) => {
 
-		nuxt.options.cli.badgeMessages.push(`Agility CMS: Active`)
-
 		//trigger a when we startup in SSR
 		if (isPreview) {
+			nuxt.options.cli.badgeMessages.push(`Agility CMS: Preview Mode`)
 			const syncClient = getSyncClient(agilityConfig)
 			await syncClient.runSync()
 		}
