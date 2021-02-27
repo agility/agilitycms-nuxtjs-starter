@@ -2,13 +2,12 @@
 
 export default {
 	target: 'static',
+	components:true,
 	build: {
 		transpile: ['@agility/agilitycms-nuxt-module']
-	  },
+	},
 	buildModules: [
-		"@agility/agilitycms-nuxt-module",
-		"@nuxtjs/tailwindcss",
-    	"@nuxtjs/google-fonts"
+		"@agility/agilitycms-nuxt-module"
 	],
 	agilitycms: {
 		channelName: "website",
@@ -16,6 +15,8 @@ export default {
 		includeLanguageCodeInUrl: false,
 		pageComponentPath: "src/AgilityPage.vue"
 	},
+
+
 	head: {
 		titleTemplate: '%s - Agility CMS + Nuxt',
 		meta: [
@@ -23,8 +24,8 @@ export default {
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
 		],
 		link: [
-			{ rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' },
-			{ rel: 'stylesheet', href: 'https://rsms.me/inter/inter.css' },
+			{ rel:"stylesheet", href:"https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css" },
+			{ rel:"stylesheet", href:"https://rsms.me/inter/inter.css"}
 		]
 	},
 	css: [],

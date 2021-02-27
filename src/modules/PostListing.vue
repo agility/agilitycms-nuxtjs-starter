@@ -1,92 +1,119 @@
 <template>
-  <div class="posts-listing">
-    <div class="container">
-      <h1>{{item.fields.title}}</h1>
+	<section class="my-12 bg-white">
+		<div class="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8">
+			<div class="lg:text-center">
+				<p class="text-base leading-6 text-indigo-600 font-semibold tracking-wide uppercase">
+					{{ fields.preHeader }}
+				</p>
+				<h3 class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl sm:leading-10">
+					{{ fields.title }}
+				</h3>
+				<p class="mt-4 max-w-2xl text-xl leading-7 text-gray-500 lg:mx-auto">
+					{{ fields.subtitle }}
+				</p>
+			</div>
 
-      <template v-for="post in posts">
-        <div class="post" :key="post.key">
-          <img v-if="post.image != null" :src="post.image.url" :alt="post.image.label" />
-          <h2>
-            <nuxt-link :to="post.to">{{post.title}}</nuxt-link>
-          </h2>
-          <p v-html="post.excerpt"></p>
-        </div>
-      </template>
-    </div>
-  </div>
+			<div class="mt-10">
+				<ul class="md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+					<li v-for="post in posts" :key="post.contentID">
+						<NuxtLink class="flex" :to="`/blog/${post.fields.slug}`">
+							<div class="flex-shrink-0">
+								<div class="flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+									<img
+										class="h-12 w-12 rounded-md"
+										:src="`${post.fields.image.url}?w=50&h=50`"
+										:alt="post.fields.image.label"
+										loading="lazy"
+									/>
+								</div>
+							</div>
+							<div class="ml-4">
+								<h4 class="text-lg leading-6 font-medium text-gray-900">
+									{{ post.fields.title }}
+								</h4>
+								<p class="mt-2 text-base leading-6 text-gray-500">
+									{{ post.excerpt }}
+								</p>
+							</div>
+						</NuxtLink>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</section>
 </template>
 
-
 <script>
-import truncate from 'truncate-html'
+const truncate = require("truncate-html");
 
 export default {
-  props: {
-    contentID: Number,
-    item: Object,
-    page: Object,
-    sitemapFlat: Object,
-    sharedContent: Object
-  },
-  computed: {
-    posts: function() {
-      let sitemap = this.sitemapFlat
+	data: function() {
+		return {
+			posts: [],
+		};
+	},
+	props: {
+		contentID: Number,
+		item: Object,
+		page: Object,
+		pageInSitemap: Object,
+		dynamicPageItem: Object,
+	},
+	computed: {
+		fields: function() {
+			return this.item.fields;
+		},
+	},
+	methods: {
+		truncateText(text, length, clamp) {
+			clamp = clamp || "...";
+			var node = document.createElement("div");
+			node.innerHTML = text;
+			var content = node.textContent;
+			return content.length > length ? content.slice(0, length) + clamp : content;
+		},
+	},
+	async fetch() {
+		let posts = [];
+		const languageCode = this.$agility.languages[0];
 
-      let contentListResult = this.sharedContent.posts
+		try {
+			//get the global header
 
-      //if we hit this on the first load, this could be null
-      if (!contentListResult) return null
-      const dynamicUrls = this.resolvePostUrls(sitemap, contentListResult.items)
+			if (process.server) {
+				const postsRet = await this.$agility.client.getContentList({
+					referenceName: "posts",
+					languageCode,
+				});
+				posts = postsRet.map((p) => {
+					p.excerpt = truncate(p.fields.content, {
+						length: 160,
+						decodeEntities: true,
+						stripTags: true,
+						reserveLastWord: true,
+					});
+					return p;
+				});
 
-      let posts = []
-      contentListResult.items.forEach((item) => {
-        let img = null
-        if (item.fields.image) {
-          img = {
-            url: item.fields.image.url + '?w=400&h=200',
-            label: item.fields.image.label
-          }
-        }
+			} else {
+				const postsResClient = await this.$agility.client.getContentList({
+					referenceName: "posts",
+					languageCode,
+				});
 
-        posts.push({
-          key: 'post-' + item.contentID,
-          contentID: item.contentID,
-          to: dynamicUrls[item.contentID],
-          title: item.fields.title,
-          excerpt: truncate(item.fields.details, {
-            stripTags: true,
-            length: 160
-          }),
-          image: img
-        })
-      })
-      return posts
-    }
-  },
+				posts = postsResClient.items.map((p) => {
+					p.excerpt = this.truncateText(p.fields.content, 160);
+					return p;
+				});
 
-  methods: {
-    resolvePostUrls(sitemap, posts) {
-      let dynamicUrls = {}
-      posts.forEach((post) => {
-        Object.keys(sitemap).forEach((path) => {
-          if (sitemap[path].contentID === post.contentID) {
-            dynamicUrls[post.contentID] = path
-          }
-        })
-      })
-      return dynamicUrls
-    }
-  }
-}
+			}
+
+
+		} catch (error) {
+			if (console) console.error("Could not load posts list.", error);
+		}
+
+		this.posts = posts;
+	},
+};
 </script>
-
-
-<style scoped>
-.posts-listing {
-  padding: 16px;
-}
-
-.posts-listing .post img {
-  max-width: 100%;
-}
-</style>
