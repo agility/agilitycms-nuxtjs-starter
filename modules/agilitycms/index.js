@@ -32,6 +32,8 @@ const getSyncClient = ({ guid, apiKey, isPreview, languages, channelName }) => {
 
 export default function (moduleOptions) {
 
+console.log("In agility module 1")
+
 	const { nuxt, options } = this
 	const env = options._env
 	const isPreview = options.dev
@@ -42,8 +44,10 @@ export default function (moduleOptions) {
 		...moduleOptions,
 		...this.options.agilitycms
 	}
-console.log("In agility module")
+
+console.log("In agility module 2")
 console.log("agilityOptions", agilityOptions)
+
 	const languages = agilityOptions.languages
 	const channelName = agilityOptions.channelName
 	const includeLanguageCodeInUrl = agilityOptions.includeLanguageCodeInUrl
@@ -51,7 +55,6 @@ console.log("agilityOptions", agilityOptions)
 
 	//get the agility sync client
 	const agilityConfig = { isPreview, guid, apiKey, languages, channelName }
-
 
 	//Generate site hook...
 	nuxt.hook('generate:extendRoutes', async (routes) => {
@@ -93,6 +96,9 @@ console.log("Got sync client", syncClient)
 
 
 	nuxt.hook('listen', async (server, { host, port }) => {
+
+		nuxt.options.cli.badgeMessages.push(`Agility CMS: Active`)
+
 		//trigger a when we startup in SSR
 		if (isPreview) {
 			const syncClient = getSyncClient(agilityConfig)
