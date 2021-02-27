@@ -1,7 +1,9 @@
 <template>
-	<div v-if="statusCode !== 200">
-		<h1>Error {{ statusCode }}</h1>
-		<div>{{ message }}</div>
+	<div v-if="statusCode !== 200" class="max-w-screen-xl mx-auto p-4 sm:p-6 lg:p-6 lg:p-8" >
+			<div class="my-6 max-w-full">
+			<div v-if="message">{{ message }}</div>
+			<div v-else>The page could not be found, or an error occurred.</div>
+		</div>
 	</div>
 	<div v-else>
 		<component
