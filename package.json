@@ -7,7 +7,6 @@
 		"dev": "nuxt",
 		"build": "nuxt build",
 		"generate": "nuxt generate",
-		"buildAndGen": "yarn build && yarn generate",
 		"start": "nuxt start"
 	},
 	"dependencies": {
