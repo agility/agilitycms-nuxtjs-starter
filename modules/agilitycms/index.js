@@ -62,8 +62,10 @@ export default function (moduleOptions) {
 
 	nuxt.hook('listen', async (server, { host, port }) => {
 		//trigger a when we startup in SSR
-		const syncClient = getSyncClient(agilityConfig)
-		await syncClient.runSync()
+		if (isPreview) {
+			const syncClient = getSyncClient(agilityConfig)
+			await syncClient.runSync()
+		}
 
 	})
 
