@@ -59,11 +59,9 @@ export default {
 			return this.item.fields;
 		},
 		posts: function() {
+			//our module data was loaded in src/data/PostsLists.js
 			return this.moduleData["PostsListing"]
 		}
-	},
-	mounted: function() {
-		console.log("POST LISTING MOUNTED", this)
 	}
 };
 </script>

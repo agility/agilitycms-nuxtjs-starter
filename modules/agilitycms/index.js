@@ -82,9 +82,6 @@ export default function (moduleOptions) {
 				routes.push({ route })
 			})
 		}
-
-		console.log("Routes", routes)
-
 	})
 
 
@@ -117,12 +114,12 @@ export default function (moduleOptions) {
 		mode: 'server'
 	})
 
-	this.addPlugin({
-		src: path.resolve(__dirname, 'agility-plugin-client.js'),
-		options: agilityConfig,
-		fileName: 'agilitycms.client.js',
-		mode: 'client'
-	})
+	// this.addPlugin({
+	// 	src: path.resolve(__dirname, 'agility-plugin-client.js'),
+	// 	options: agilityConfig,
+	// 	fileName: 'agilitycms.client.js',
+	// 	mode: 'client'
+	// })
 }
 
 //module.exports.meta = require('../package.json')
