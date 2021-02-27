@@ -55,8 +55,10 @@ export default function (moduleOptions) {
 	//Generate site hook...
 	nuxt.hook('generate:extendRoutes', async (routes) => {
 
+		console.log("Agility CMS - Generating Nuxt Routes")
 		//trigger a sync before we generate stuff
 		const syncClient = getSyncClient(agilityConfig)
+console.log("Got sync client", syncClient)
 		await syncClient.runSync()
 
 		for (let langIndex = 0; langIndex < languages.length; langIndex++) {
