@@ -11,6 +11,8 @@
 	},
 	"dependencies": {
 		"@agility/agilitycms-nuxt-module": "^1.0.9",
+		"@agility/content-fetch": "^1.0.3",
+    	"@agility/content-sync": "^0.1.24",
 		"nuxt": "^2.15.2",
 		"truncate-html": "^1.0.3"
 	},
