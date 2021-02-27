@@ -4,11 +4,8 @@ export default {
 	target: 'static',
 	components:true,
 	generate: { fallback: '404.html' },
-	 build: {
-	 	transpile: ['~/modules/agilitycms']
-	 },
 	modules: [
-		"~/modules/agilitycms"
+		"@agility/agilitycms-nuxt-module"
 	],
 	agilitycms: {
 		channelName: "website",
