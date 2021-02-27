@@ -10,7 +10,7 @@
 		"start": "nuxt start"
 	},
 	"dependencies": {
-		"@agility/agilitycms-nuxt-module": "^1.0.5",
+		"@agility/agilitycms-nuxt-module": "^1.0.6",
 		"nuxt": "^2.15.2",
 		"truncate-html": "^1.0.3"
 	},
