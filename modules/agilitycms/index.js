@@ -42,7 +42,8 @@ export default function (moduleOptions) {
 		...moduleOptions,
 		...this.options.agilitycms
 	}
-
+console.log("In agility module")
+console.log("agilityOptions", agilityOptions)
 	const languages = agilityOptions.languages
 	const channelName = agilityOptions.channelName
 	const includeLanguageCodeInUrl = agilityOptions.includeLanguageCodeInUrl
