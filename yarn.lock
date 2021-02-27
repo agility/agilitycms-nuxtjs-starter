@@ -2,10 +2,10 @@
 # yarn lockfile v1
 
 
-"@agility/agilitycms-nuxt-module@^1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@agility/agilitycms-nuxt-module/-/agilitycms-nuxt-module-1.0.8.tgz#4f06fc232b54521f4b50fcec8b2fafb6edb91aa3"
-  integrity sha512-QNI7gelnPMht21qYPpcXgR+KiGqZGNZ8PpGPagsLfqAdh2cOpCjeyVSg/flkiBfDw0G5dy9LoHPjeq2MQBmckg==
+"@agility/agilitycms-nuxt-module@^1.0.9":
+  version "1.0.9"
+  resolved "https://registry.yarnpkg.com/@agility/agilitycms-nuxt-module/-/agilitycms-nuxt-module-1.0.9.tgz#9c517b6aaf8b09ca7f15e644cc4bc16ff8a5a238"
+  integrity sha512-zlUixsmEwASIC4IZc9S2pnTZ536IBDpy6uSUhGnPg2gPpczYkN2rw4G3ItTtXMEl0XhrPK/usuw4cXrcEmDrVQ==
   dependencies:
     "@agility/content-fetch" "^1.0.3"
     "@agility/content-sync" "^0.1.24"
