@@ -11,8 +11,6 @@ export default ({ guid, apiKey, isPreview, languages, channelName }) => {
 	const rootPath = process.cwd()
 	let cachePath = `${rootPath}/node_modules/@agility/.cache/${guid}/${isPreview ? "preview" : "live" }`;
 
-	console.log(`Getting sync client for path ${cachePath}`)
-
 	return agilityContentSync.getSyncClient({
 		guid,
 		apiKey,

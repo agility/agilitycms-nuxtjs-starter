@@ -13,8 +13,6 @@ const getSyncClient = ({ guid, apiKey, isPreview, languages, channelName }) => {
 	const rootPath = process.cwd()
 	let cachePath = `${rootPath}/node_modules/@agility/.cache/${guid}/${isPreview ? "preview" : "live" }`;
 
-	console.log(`Getting sync client for path ${cachePath}`)
-
 	return agilityContentSync.getSyncClient({
 		guid,
 		apiKey,
@@ -32,10 +30,8 @@ const getSyncClient = ({ guid, apiKey, isPreview, languages, channelName }) => {
 
 export default function (moduleOptions) {
 
-console.log("In agility module 1")
-
 	const { nuxt, options } = this
-	//const env = options._env
+
 	const isPreview = options.dev
 	const guid = process.env.AGILITY_GUID
 	const apiKey = isPreview ? process.env.AGILITY_API_PREVIEW_KEY : process.env.AGILITY_API_FETCH_KEY
@@ -44,9 +40,6 @@ console.log("In agility module 1")
 		...moduleOptions,
 		...this.options.agilitycms
 	}
-
-console.log("In agility module 2")
-console.log("agilityOptions", agilityOptions)
 
 	const languages = agilityOptions.languages
 	const channelName = agilityOptions.channelName
@@ -59,10 +52,8 @@ console.log("agilityOptions", agilityOptions)
 	//Generate site hook...
 	nuxt.hook('generate:extendRoutes', async (routes) => {
 
-		console.log("Agility CMS - Generating Nuxt Routes")
 		//trigger a sync before we generate stuff
 		const syncClient = getSyncClient(agilityConfig)
-console.log("Got sync client", syncClient)
 		await syncClient.runSync()
 
 		for (let langIndex = 0; langIndex < languages.length; langIndex++) {
@@ -74,15 +65,15 @@ console.log("Got sync client", syncClient)
 
 			Object.keys(sitemapFlat).forEach(path => {
 
-				let route = path.substring(1)
+				let route = path
 
-				if (pathIndex === 0) route = ""
+				if (pathIndex === 0) route = "/"
 
 				if (includeLanguageCodeInUrl) {
 					if (pathIndex === 0) {
-						route = `${languageCode}`
+						route = `/${languageCode}`
 					} else {
-						route = `${languageCode}/${route}`
+						route = `/${languageCode}/${route}`
 					}
 				}
 
@@ -91,6 +82,8 @@ console.log("Got sync client", syncClient)
 				routes.push({ route })
 			})
 		}
+
+		console.log("Routes", routes)
 
 	})
 
@@ -102,6 +95,8 @@ console.log("Got sync client", syncClient)
 			nuxt.options.cli.badgeMessages.push(`Agility CMS: Preview Mode`)
 			const syncClient = getSyncClient(agilityConfig)
 			await syncClient.runSync()
+		} else {
+			nuxt.options.cli.badgeMessages.push(`Agility CMS: Live Mode`)
 		}
 
 	})

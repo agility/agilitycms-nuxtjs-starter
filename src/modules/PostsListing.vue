@@ -44,76 +44,26 @@
 </template>
 
 <script>
-const truncate = require("truncate-html");
 
 export default {
-	data: function() {
-		return {
-			posts: [],
-		};
-	},
 	props: {
 		contentID: Number,
 		item: Object,
 		page: Object,
 		pageInSitemap: Object,
 		dynamicPageItem: Object,
+		moduleData: Object
 	},
 	computed: {
 		fields: function() {
 			return this.item.fields;
 		},
-	},
-	methods: {
-		truncateText(text, length, clamp) {
-			clamp = clamp || "...";
-			var node = document.createElement("div");
-			node.innerHTML = text;
-			var content = node.textContent;
-			return content.length > length ? content.slice(0, length) + clamp : content;
-		},
-	},
-	async fetch() {
-		let posts = [];
-		const languageCode = this.$agility.languages[0];
-
-		try {
-			//get the global header
-
-			if (process.server) {
-				const postsRet = await this.$agility.client.getContentList({
-					referenceName: "posts",
-					languageCode,
-				});
-				posts = postsRet.map((p) => {
-					p.excerpt = truncate(p.fields.content, {
-						length: 160,
-						decodeEntities: true,
-						stripTags: true,
-						reserveLastWord: true,
-					});
-					return p;
-				});
-
-			} else {
-				const postsResClient = await this.$agility.client.getContentList({
-					referenceName: "posts",
-					languageCode,
-				});
-
-				posts = postsResClient.items.map((p) => {
-					p.excerpt = this.truncateText(p.fields.content, 160);
-					return p;
-				});
-
-			}
-
-
-		} catch (error) {
-			if (console) console.error("Could not load posts list.", error);
+		posts: function() {
+			return this.moduleData["PostsListing"]
 		}
-
-		this.posts = posts;
 	},
+	mounted: function() {
+		console.log("POST LISTING MOUNTED", this)
+	}
 };
 </script>

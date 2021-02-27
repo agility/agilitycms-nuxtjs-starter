@@ -4,7 +4,13 @@
 		<div>{{ message }}</div>
 	</div>
 	<div v-else>
-		<component :is="componentToRender" :page="page" :dynamicPageItem="dynamicPageItem" />
+		<component
+			:is="componentToRender"
+			:page="page"
+			:pageInSitemap="pageInSitemap"
+			:dynamicPageItem="dynamicPageItem"
+			:moduleData="moduleData"
+		/>
 	</div>
 </template>
 
@@ -17,6 +23,7 @@ export default {
 			pageInSitemap: {title:""},
 			page: {title: "", seo: {metaDescription: ""}},
 			dynamicPageItem: null,
+			moduleData: {},
 			message: null,
 			statusCode: 0,
 		};
@@ -93,10 +100,33 @@ export default {
 				});
 			}
 
+			let moduleData = {}
+			//load extra data
+			console.log(page)
+
+			for (let zoneName in page.zones) {
+				let zone = page.zones[zoneName]
+				for (let moduleIndex = 0; moduleIndex < zone.length; moduleIndex++) {
+					let module = zone[moduleIndex]
+					const moduleName = module.module
+
+					//try to find a data accessor for this module name...
+					const fetcher = AgilityComponents.dataFetch[moduleName]
+					if (fetcher) {
+						moduleData[moduleName] = await fetcher({ $agility })
+					}
+
+				}
+			}
+
+			console.log(moduleData)
+
+
 			return {
 				pageInSitemap,
 				page,
 				dynamicPageItem,
+				moduleData,
 				message: null,
 				statusCode: 200,
 			};

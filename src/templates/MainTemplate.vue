@@ -5,9 +5,7 @@
 			:page="page"
 			:pageInSitemap="pageInSitemap"
 			:dynamicPageItem="dynamicPageItem"
-			:sharedContent="sharedContent"
-			:sitemapFlat="sitemapFlat"
-			:sitemapNested="sitemapNested"
+			:moduleData="moduleData"
 		/>
 	</main>
 </template>
@@ -17,11 +15,10 @@ import ContentZone from "../AgilityContentZone";
 export default {
 	props: {
 		page: Object,
+		moduleData: Object,
 		pageInSitemap: Object,
-		dynamicPageItem: Object,
-		sharedContent: Object,
-		sitemapFlat: Object,
-		sitemapNested: Array,
+		dynamicPageItem: Object
+
 	},
 	components: {
 		ContentZone,

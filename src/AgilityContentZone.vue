@@ -8,9 +8,7 @@
         :page="page"
         :pageInSitemap="pageInSitemap"
         :dynamicPageItem="dynamicPageItem"
-        :sharedContent="sharedContent"
-        :sitemapFlat="sitemapFlat"
-        :sitemapNested="sitemapNested"
+        :moduleData="moduleData"
         :key="module.contentID"
       />
     </template>
@@ -24,9 +22,7 @@ export default {
     page: Object,
     pageInSitemap: Object,
     dynamicPageItem: Object,
-    sharedContent: Object,
-    sitemapFlat: Object,
-    sitemapNested: Array
+    moduleData: Object
   },
   computed: {
     modules: function() {
