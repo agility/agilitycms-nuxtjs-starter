@@ -14,6 +14,7 @@ import AgilityComponents from "./agility.components";
 export default {
 	data() {
 		return {
+			pageInSitemap: {title:""},
 			page: {title: "", seo: {metaDescription: ""}},
 			dynamicPageItem: null,
 			message: null,
@@ -29,7 +30,7 @@ export default {
 	mounted: function() {},
 	head() {
 		return {
-			title: this.page.title,
+			title: this.pageInSitemap.title,
 			meta: [
 				{
 					hid: "description",
@@ -93,6 +94,7 @@ export default {
 			}
 
 			return {
+				pageInSitemap,
 				page,
 				dynamicPageItem,
 				message: null,
