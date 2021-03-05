@@ -45,6 +45,11 @@ Run `npm start` for a dev server. Navigate to `http://localhost:3000/`. The app 
 
 This will also load the latest (staging mode) content from Agility CMS.  When you change content in the CMS, simply restart the dev server those changes updated in the site.
 
+### KNOWN ISSUE IN DEVELOPMENT
+The site is optimized for Static mode, and uses the Link tag as much as possible, however, when running in local dev mode, some of the Link tags (as are used on the blog post listing and the top header) don't work until you refresh the page.
+
+We're waiting patiently for a version of Nuxt that avoids this problem...
+
 ### `$agilitycms` Service
 Your Agility CMS content is loaded using the `$agilitycms.client`.  This utilizes the `@agility/agilitycms-nuxt-module` package, and is only available on the server.
 
