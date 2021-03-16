@@ -5,7 +5,8 @@ export default {
 	components:true,
 	generate: { fallback: '404.html' },
 	modules: [
-		"@agility/agilitycms-nuxt-module"
+		'@nuxtjs/tailwindcss',
+		'@agility/agilitycms-nuxt-module'
 	],
 	agilitycms: {
 		channelName: "website",
@@ -22,9 +23,18 @@ export default {
 			{ name: 'viewport', content: 'width=device-width, initial-scale=1' },
 		],
 		link: [
-			{ rel:"stylesheet", href:"https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css" },
-			{ rel:"stylesheet", href:"https://rsms.me/inter/inter.css"}
+			// { rel:"stylesheet", href:"https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css" },
+			// { rel:"stylesheet", href:"https://rsms.me/inter/inter.css"}
 		]
 	},
 	css: [],
+	googleFonts: {
+		families: {
+		  Inter: true
+		}
+	  },
+	tailwindcss: {
+		jit: true,
+		cssPath: '~/src/css/index.css'
+	  }
 }

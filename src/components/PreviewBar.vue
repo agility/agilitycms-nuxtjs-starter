@@ -52,14 +52,9 @@ export default {
 	 	},
 	 },
 	async fetch() {
-
 		if (process.server) {
-			console.log("on servers")
 			this.isPreviewMode = this.$root.context.isDev
 		}
-	},
-	mounted() {
-		console.log("IsPreview", this.isPreviewMode)
 	}
 };
 </script>
