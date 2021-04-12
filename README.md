@@ -10,8 +10,8 @@ This is a sample blog with Nuxt and Agility CMS.  You can use this as a starting
 Nuxt and Agility CMS? Oh ya, let's go!
 
 ### Agility CMS Account
-The first thing you need is a free Agility CMS account. [You can get that here 👋](https://manager.agilitycms.com/org/subscriptions/instance-setup?template=blog-with-nextjs&plan=agility-free).
-Since this Nuxt starter is so ✨new✨, we don't have an Official Starter package for it, so for now, we're linking to our NextJS starter, which happens to have the right content model for this 🧐.
+The first thing you need is a free Agility CMS account. [You can get that here 👋](https://manager.agilitycms.com/org/subscriptions/instance-setup?template=jamstack-blog&plan=agility-free).
+Once you create your Agility CMS account and ✨new✨ project name, come back here 🧐.
 
 ### Clone the Repo
 
