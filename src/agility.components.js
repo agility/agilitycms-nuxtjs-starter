@@ -1,24 +1,30 @@
 // Our Agility Modules
-import RichTextArea from './modules/RichTextArea'
-import PostsListing from './modules/PostsListing'
-import PostsListingData from './data/PostsListing'
-import PostDetails from './modules/PostDetails'
-import HeroBackgroundAsImage from './modules/HeroBackgroundAsImage'
+import TextBlockWithImage from "./components/agility-pageModules/TextBlockWithImage";
+import RichTextArea from "./components/agility-pageModules/RichTextArea";
+import Heading from "./components/agility-pageModules/Heading";
+import FeaturedPost from "./components/agility-pageModules/FeaturedPost";
+import PostsListing from "./components/agility-pageModules/PostsListing";
+import PostDetails from "./components/agility-pageModules/PostDetails";
+
+// Our Agility Data Fetch
+import PostsListingData from "./data/PostsListing";
 
 // Our Agility PageTemplates
-import MainTemplate from './templates/MainTemplate'
+import MainTemplate from "./components/agility-pageTemplates/MainTemplate";
 
 export default {
-	dataFetch: {
-		"PostsListing": PostsListingData
-	},
-    moduleComponents: {
-        RichTextArea,
-        PostsListing,
-		HeroBackgroundAsImage,
-		PostDetails
-    },
-    pageTemplateComponents: {
-        "Main Template": MainTemplate
-    }
-}
+  dataFetch: {
+    PostsListing: PostsListingData,
+  },
+  moduleComponents: {
+    TextBlockWithImage,
+    RichTextArea,
+    Heading,
+    FeaturedPost,
+    PostsListing,
+    PostDetails,
+  },
+  pageTemplateComponents: {
+    "Main Template": MainTemplate,
+  },
+};

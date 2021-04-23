@@ -15,48 +15,48 @@
   </div>
 </template>
 <script>
-import AgilityComponents from './agility.components'
+import AgilityComponents from "./agility.components";
 export default {
   props: {
     name: String,
     page: Object,
     pageInSitemap: Object,
     dynamicPageItem: Object,
-    moduleData: Object
+    moduleData: Object,
   },
   computed: {
     modules: function() {
-      return this.renderModules()
-    }
+      return this.renderModules();
+    },
   },
   methods: {
     renderModules: function() {
-      let modules = []
-      const contentZoneName = this.name
-      const modulesForThisContentZone = this.page.zones[contentZoneName]
+      let modules = [];
+      const contentZoneName = this.name;
+      const modulesForThisContentZone = this.page.zones[contentZoneName];
       if (modulesForThisContentZone === undefined) {
         console.error(
           `Cannot render modules for zone "${contentZoneName}". This does not appear to be a valid content zone for this page template.`
-        )
-        return
+        );
+        return;
       }
       modulesForThisContentZone.forEach((moduleItem) => {
         const ModuleComponentToRender =
-          AgilityComponents.moduleComponents[moduleItem.module]
+          AgilityComponents.moduleComponents[moduleItem.module];
         if (ModuleComponentToRender) {
           modules.push({
             component: ModuleComponentToRender,
             contentID: moduleItem.item.contentID,
-            item: moduleItem.item
-          })
+            item: moduleItem.item,
+          });
         } else {
           console.error(
             `No component found for the module "${moduleItem.module}". Cannot render module.`
-          )
+          );
         }
-      })
-      return modules
-    }
-  }
-}
+      });
+      return modules;
+    },
+  },
+};
 </script>

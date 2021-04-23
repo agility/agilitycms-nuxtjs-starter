@@ -1,31 +1,36 @@
 const truncate = require("truncate-html");
 
 export default async ({ $agility }) => {
+  let posts = [];
+  const languageCode = $agility.languages[0];
 
-	let posts = [];
-	const languageCode = $agility.languages[0];
+  try {
+    // raw posts
+    const rawPosts = await $agility.client.getContentList({
+      referenceName: "posts",
+      languageCode,
+    });
 
-	try {
+    // categories
+    const categories = await $agility.client.getContentList({
+      referenceName: "categories",
+      languageCode,
+    });
 
+    posts = rawPosts.map((post) => {
+      // get category id
+      const categoryID = post.fields.category?.contentid;
 
-		const postsRet = await $agility.client.getContentList({
-			referenceName: "posts",
-			languageCode,
-		});
-		posts = postsRet.map((p) => {
-			p.excerpt = truncate(p.fields.content, {
-				length: 160,
-				decodeEntities: true,
-				stripTags: true,
-				reserveLastWord: true,
-			});
-			return p;
-		});
+      // find matching category
+      post.linkedCategory = categories?.find((c) => c.contentID == categoryID);
 
-	} catch (error) {
-		if (console) console.error("Could not load posts list.", error);
-	}
+      // format date
+      post.formattedDate = new Date(post.fields.date).toLocaleDateString();
+      return post;
+    });
+  } catch (error) {
+    if (console) console.error("Could not load posts list.", error);
+  }
 
-	return posts
-
-}
+  return posts;
+};
