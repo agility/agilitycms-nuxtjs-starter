@@ -3,7 +3,7 @@
     <div class="max-w-screen-xl mx-auto">
       <div class="sm:grid sm:gap-8 sm:grid-cols-2 lg:grid-cols-3">
         <template v-for="post in posts">
-          <NuxtLink :to="`/blog/${post.fields.slug}`" :key="post.title">
+          <a :href="`/blog/${post.fields.slug}`" :key="post.title">
             <div class="flex-col group mb-8 md:mb-0">
               <div class="relative h-64">
                 <img
@@ -32,7 +32,7 @@
                 </h2>
               </div>
             </div>
-          </NuxtLink>
+          </a>
         </template>
       </div>
     </div>
@@ -50,7 +50,7 @@ export default {
   },
   computed: {
     posts: function() {
-      //our module data was loaded in src/data/PostsLists.js
+      // our module data was loaded in src/data/PostsLists.js
       return this.moduleData["PostsListing"];
     },
   },

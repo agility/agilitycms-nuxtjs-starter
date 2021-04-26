@@ -1,5 +1,3 @@
-//require('dotenv').config()
-
 export default {
   target: "static",
   components: true,
@@ -38,15 +36,7 @@ export default {
   },
 
   head: {
-    titleTemplate: "%s | My Travel Blog",
-    meta: [
-      { charset: "utf-8" },
-      { name: "viewport", content: "width=device-width, initial-scale=1" },
-    ],
-    link: [
-      // { rel:"stylesheet", href:"https://cdn.jsdelivr.net/npm/@tailwindcss/ui@latest/dist/tailwind-ui.min.css" },
-      // { rel:"stylesheet", href:"https://rsms.me/inter/inter.css"}
-    ],
+    link: [],
   },
   css: [],
   googleFonts: {
@@ -56,6 +46,6 @@ export default {
   },
   tailwindcss: {
     jit: true,
-    cssPath: "~/src/css/index.css",
+    cssPath: "./src/css/global.css",
   },
 };

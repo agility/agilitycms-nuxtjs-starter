@@ -2,7 +2,7 @@
   <div class="relative px-8 mb-8">
     <div class="flex flex-col sm:flex-row max-w-screen-xl mx-auto pt-8 group">
       <div class="sm:w-1/2 lg:w-2/3 sm:rounded-t-none sm:rounded-l-lg relative">
-        <NuxtLink :to="`/blog/${fields.slug}`" class="cursor-pointer">
+        <a :href="`/blog/${fields.slug}`" class="cursor-pointer">
           <div class="h-64 sm:h-96 relative">
             <img
               :src="fields.image.url"
@@ -11,12 +11,12 @@
               style="height: 100%; width: 100%;"
             />
           </div>
-        </NuxtLink>
+        </a>
       </div>
       <div
         class="sm:w-1/2 lg:w-1/3 bg-gray-100 p-8 border-2 border-t-0 rounded-b-lg sm:rounded-bl-none sm:rounded-r-lg sm:border-t-2 sm:border-l-0 relative"
       >
-        <NuxtLink :to="`/blog/${fields.slug}`" class="cursor-pointer">
+        <a :href="`/blog/${fields.slug}`" class="cursor-pointer">
           <div
             class="font-display uppercase text-primary-500 text-xs font-bold tracking-widest leading-loose after:content"
           >
@@ -37,7 +37,7 @@
             class="text-sm mt-3 leading-loose text-gray-600 font-medium"
             :inner-html.prop="fields.content | truncate(160)"
           />
-        </NuxtLink>
+        </a>
       </div>
     </div>
   </div>

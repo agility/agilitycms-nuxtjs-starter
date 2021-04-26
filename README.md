@@ -1,66 +1,166 @@
-# Agility CMS + Nuxt -> Blog
-This is a sample blog with Nuxt and Agility CMS.  You can use this as a starting point to build a fully-featured Nuxt website with Agility CMS.
+# Agility CMS & Nuxt.js Starter
 
-## Builds:
+This is sample Nuxt.js starter site that uses Agility CMS and aims to be a foundation for building websites using Nuxt.js and Agility CMS.
 
--  https://agility-nuxt-blog.netlify.app/
-  - [![Netlify Status](https://api.netlify.com/api/v1/badges/15e7f60a-2e09-4087-a85a-c2413c14a092/deploy-status)](https://app.netlify.com/sites/agility-nuxt-blog/deploys)
+[Live Website Demo]()
+
+[New to Agility CMS? Sign up for a FREE account](https://agilitycms.com/free)
+
+## About This Starter
+
+- Uses [`@agility/agilitycms-nuxt-module`](https://github.com/agility/agilitycms-nuxt-module) - Agility CMS integration for Nuxt.js that supports Content Sync for ultra-fast build times, full page routing and static rendering, and easy async data loading for additional components.
+- Supports full [Page Management](https://help.agilitycms.com/hc/en-us/articles/360055805831).
+- Supports Preview Mode.
+- Provides a functional structure that loads a Page Templates dynamically, and also dynamically loads and renders appropriate Agility CMS Page Modules (as React components).
+
+### Tailwind CSS
+
+This starter uses [Tailwind CSS](https://tailwindcss.com/), a simple and lightweight utility-first CSS framework packed with classes that can be composed to build any design, directly in your markup.
+
+It also comes equipped with [Autoprefixer](https://www.npmjs.com/package/autoprefixer), a plugin which use the data based on current browser popularity and property support to apply CSS prefixes for you.
 
 ## Getting Started
-Nuxt and Agility CMS? Oh ya, let's go!
 
-### Agility CMS Account
-The first thing you need is a free Agility CMS account. [You can get that here 👋](https://manager.agilitycms.com/org/subscriptions/instance-setup?template=jamstack-blog&plan=agility-free).
-Once you create your Agility CMS account and ✨new✨ project name, come back here 🧐.
+To start using the Agility CMS & Gatsby Starter, [sign up](https://agilitycms.com/free) for a FREE account and create a new Instance using the Blog Template.
 
-### Clone the Repo
+1. Clone this repository
+2. Run `npm install` or `yarn install`
+3. Rename the `.env.example` file to `.env`
+4. Retrieve your `GUID` & `API Keys (Preview/Fetch)` from Agility CMS by going to [Settings > API Keys](https://manager.agilitycms.com/settings/apikeys).
 
-Now that you've got the **content**, *you need the `code`!*
+[How to Retrieve your GUID and API Keys from Agility](https://help.agilitycms.com/hc/en-us/articles/360031919212-Retrieving-your-API-Key-s-Guid-and-API-URL-)
 
-Go ahead and clone the repo from github: 👇
-```shell
-git clone https://github.com/agility/agility-nuxt-blog.git
+## Running the Site Locally
+
+When running your site in `development` mode, you will see the latest content in from the CMS.
+
+#### yarn
+
+1. `yarn install`
+2. `yarn dev`
+
+#### npm
+
+1. `npm install`
+2. `npm run dev`
+
+### Production Mode
+
+When running your site in `production` mode, you will see the published from the CMS.
+
+- `build` => This will build your site with webpack and minify the JS and CSS for production.
+- `generate` => This will build your site and generate every route as an HTML file (used for static hosting).
+- `start` => This will spin up a production server for your site.
+
+#### yarn
+
+1. `yarn build`
+2. `yarn generate`
+3. `yarn start`
+
+#### npm
+
+1. `yarn build`
+2. `yarn generate`
+3. `yarn start`
+
+## Deploying Your Site
+
+Nuxt.js allows you to deploy your site as a `statically generated` site or as a `server-side rendered` site.
+
+[Deploy your Nuxt.js site to Netlify (Static)](https://nuxtjs.org/docs/2.x/deployment/netlify-deployment/)
+
+[Deploy your Nuxt.js site to Vercel (Static & Server)](https://nuxtjs.org/docs/2.x/deployment/vercel-deployment)
+
+## Notes
+
+### How to Register Page Modules
+
+To create a new Page Module, create a new Vue component within the `src/components/agility-pageModules` directory. Make sure the Vue component for the Page Module matches the name of the Page Module in the CMS.
+
+Example of `RichTextArea.vue` Page Module:
+
+```
+<template>
+  <div class="relative px-8">
+    <div class="max-w-2xl mx-auto my-12 md:mt-18 lg:mt-20">
+      <div class="prose max-w-full mx-auto" v-html="item.fields.textblob" />
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    contentID: Number,
+    item: Object,
+    page: Object,
+    pageInSitemap: Object,
+    dynamicPageItem: Object,
+  },
+};
+</script>
 ```
 
-### Install Dependencies
+### How to Register Page Templates
 
-`npm install` or `yarn install`
+To create a new Page Template, create a new Vue component within the `src/components/agility-pageTemplates` directory. Make sure the Vue component for the Page Template matches the name of the Page Template in the CMS.
 
-Normally, this will create 9,999,999,999 files in your `node_modules` folder.  Luckily, we're only gonna create 9,999,999 for this small demo.
+Example of `MainTemplate.vue` Page Template:
 
- YAY! 👏👏👏
+```
+<template>
+  <ContentZone
+    name="MainContentZone"
+    :page="page"
+    :pageInSitemap="pageInSitemap"
+    :dynamicPageItem="dynamicPageItem"
+    :moduleData="moduleData"
+  />
+</template>
 
+<script>
+import ContentZone from "../../AgilityContentZone";
+export default {
+  props: {
+    page: Object,
+    moduleData: Object,
+    pageInSitemap: Object,
+    dynamicPageItem: Object,
+  },
+  components: {
+    ContentZone,
+  },
+};
+</script>
+```
 
-### Environment Variables
-You care about the environment don't you? 🌲🌳🌴🎋
-
-Either way, you're gonna need to grab a few variables from your Agility CMS account.  Head over to the [API Keys page](https://manager.agilitycms.com/settings/apikeys) in Agility CMS (https://manager.agilitycms.com/settings/apikeys) and grab your GUID, and API Keys for Preview and Fetch.
-
-- Rename `.env.example` file to `.env`
-- Edit `.env` and add your guid and api key
-
-## Development server
-
-Run `npm start` for a dev server. Navigate to `http://localhost:3000/`. The app will automatically reload if you change any of the source files.
-
-This will also load the latest (staging mode) content from Agility CMS.  When you change content in the CMS, simply restart the dev server those changes updated in the site.
-
-### KNOWN ISSUE IN DEVELOPMENT
-The site is optimized for Static mode, and uses the Link tag as much as possible, however, when running in local dev mode, some of the Link tags (as are used on the blog post listing and the top header) don't work until you refresh the page.
-
-We're waiting patiently for a version of Nuxt that avoids this problem...
-
-### `$agilitycms` Service
-Your Agility CMS content is loaded using the `$agilitycms.client`.  This utilizes the `@agility/agilitycms-nuxt-module` package, and is only available on the server.
-
-## Build
-
-Run `npm run generate` or `yarn generate` to generate the static version of the site. The pages and data will be stored in the `dist/` directory.
-
-## Further help
-
-### Nuxt
-To get more help with Nuxt, check out the docs [Nuxtjs.org](https://nuxtjs.org/).
+## Resources
 
 ### Agility CMS
-To get help with Agility CMS, reach out to us on our website https://agilitycms.com
+
+- [Official site](https://agilitycms.com)
+- [Documentation](https://help.agilitycms.com/hc/en-us)
+
+### Nuxt.js
+
+- [Official site](https://nuxtjs.org/)
+- [Documentation](https://nuxtjs.org/docs/2.x/get-started/installation)
+
+### Tailwind CSS
+
+- [Official site](http://tailwindcss.com/)
+- [Documentation](http://tailwindcss.com/docs)
+
+### Community
+
+- [Official Slack](https://join.slack.com/t/agilitycommunity/shared_invite/enQtNzI2NDc3MzU4Njc2LWI2OTNjZTI3ZGY1NWRiNTYzNmEyNmI0MGZlZTRkYzI3NmRjNzkxYmI5YTZjNTg2ZTk4NGUzNjg5NzY3OWViZGI)
+- [Blog](https://agilitycms.com/resources/posts)
+- [GitHub](https://github.com/agility)
+- [Forums](https://help.agilitycms.com/hc/en-us/community/topics)
+- [Facebook](https://www.facebook.com/AgilityCMS/)
+- [Twitter](https://twitter.com/AgilityCMS)
+
+## Feedback and Questions
+
+If you have feedback or questions about this starter, please use the [Github Issues](https://github.com/agility/agilitycms-gatsby-starter/issues) on this repo, join our [Community Slack Channel](https://join.slack.com/t/agilitycommunity/shared_invite/enQtNzI2NDc3MzU4Njc2LWI2OTNjZTI3ZGY1NWRiNTYzNmEyNmI0MGZlZTRkYzI3NmRjNzkxYmI5YTZjNTg2ZTk4NGUzNjg5NzY3OWViZGI) or create a post on the [Agility Developer Community](https://help.agilitycms.com/hc/en-us/community/topics).

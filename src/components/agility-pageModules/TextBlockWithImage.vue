@@ -5,14 +5,14 @@
     >
       <div class="md:w-6/12 flex-shrink-0 relative">
         <template v-if="fields.primaryButton.href">
-          <NuxtLink :to="fields.primaryButton.href">
+          <a :href="fields.primaryButton.href">
             <img
               :src="fields.image.url"
               :alt="fields.image.label"
               style="width: 768px; height: 420px;"
               class="rounded-lg object-cover object-center"
             />
-          </NuxtLink>
+          </a>
         </template>
         <template v-else>
           <img
@@ -49,16 +49,8 @@
             {{ fields.content }}
           </p>
           <template v-if="fields.primaryButton">
-            <NuxtLink
-              :to="fields.primaryButton.href"
-              v-if="!isUrlAbsolute(fields.primaryButton.href)"
-              class="inline-block mt-8 md:mt-8 px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-primary-500 hover:bg-primary-700 focus:outline-none focus:border-primary-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
-            >
-              {{ fields.primaryButton.text }}
-            </NuxtLink>
             <a
               :href="fields.primaryButton.href"
-              v-else
               class="inline-block mt-8 md:mt-8 px-8 py-3 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-primary-500 hover:bg-primary-700 focus:outline-none focus:border-primary-700 focus:shadow-outline-indigo active:bg-indigo-700 transition ease-in-out duration-150"
             >
               {{ fields.primaryButton.text }}
@@ -77,12 +69,6 @@ export default {
     page: Object,
     pageInSitemap: Object,
     dynamicPageItem: Object,
-  },
-  methods: {
-    // function to check whether or not the url is absolute
-    isUrlAbsolute: function(url) {
-      url.indexOf("://") > 0 || url.indexOf("//") === 0;
-    },
   },
   computed: {
     fields: function() {

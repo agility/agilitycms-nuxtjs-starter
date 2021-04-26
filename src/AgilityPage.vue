@@ -1,7 +1,7 @@
 <template>
   <div
     v-if="statusCode !== 200"
-    class="max-w-screen-xl mx-auto p-4 sm:p-6 lg:p-6 lg:p-8"
+    class="max-w-screen-xl mx-auto p-4 sm:p-6 lg:p-6"
   >
     <div class="my-6 max-w-full">
       <div v-if="message">{{ message }}</div>
@@ -43,7 +43,7 @@ export default {
   mounted: function() {},
   head() {
     return {
-      title: this.pageInSitemap.title,
+      title: `${this.pageInSitemap.title} | My Travel Blog`,
       meta: [
         {
           hid: "generator",

@@ -1,7 +1,8 @@
-const truncate = require("truncate-html");
-
 export default async ({ $agility }) => {
+  // set up posts array
   let posts = [];
+
+  // set language code
   const languageCode = $agility.languages[0];
 
   try {
@@ -26,6 +27,8 @@ export default async ({ $agility }) => {
 
       // format date
       post.formattedDate = new Date(post.fields.date).toLocaleDateString();
+
+      // return post
       return post;
     });
   } catch (error) {

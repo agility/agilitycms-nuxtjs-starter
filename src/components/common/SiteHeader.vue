@@ -5,7 +5,7 @@
         class="flex justify-between items-center py-6 md:justify-start md:space-x-10"
       >
         <div class="lg:w-0 lg:flex-1">
-          <NuxtLink to="/" class="flex items-center">
+          <a href="/" class="flex items-center">
             <template v-if="contentItem.logo">
               <img
                 class="h-14 sm:h-20 w-auto z-50"
@@ -17,7 +17,7 @@
                 {{ contentItem.siteName }}
               </p>
             </template>
-          </NuxtLink>
+          </a>
         </div>
         <div class="-mr-2 -my-2 md:hidden">
           <button
@@ -43,13 +43,13 @@
         </div>
         <nav class="hidden md:flex space-x-10">
           <template v-for="link in links">
-            <NuxtLink
-              :to="link.path"
+            <a
+              :href="link.path"
               :key="link.path"
               class="text-base leading-6 font-medium text-secondary-500 hover:text-primary-500 border-transparent border-b-2 hover:border-primary-500 hover:border-b-primary hover:border-b-2 focus:outline-none focus:text-primary-500 transition duration-300"
             >
               {{ link.text }}
-            </NuxtLink>
+            </a>
           </template>
         </nav>
       </div>
@@ -89,8 +89,8 @@
             <div>
               <nav class="grid gap-y-8">
                 <template v-for="link in links">
-                  <NuxtLink
-                    :to="link.path"
+                  <a
+                    :href="link.path"
                     :key="link.path"
                     class="-m-3 p-3 flex items-center space-x-3 rounded-md hover:bg-gray-50 transition duration-300"
                     @click="toggle"
@@ -112,7 +112,7 @@
                     <div class="text-base leading-6 font-medium text-gray-900">
                       {{ link.text }}
                     </div>
-                  </NuxtLink>
+                  </a>
                 </template>
               </nav>
             </div>
