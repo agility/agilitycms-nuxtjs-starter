@@ -60,9 +60,9 @@ When running your site in `production` mode, you will see the published from the
 
 #### npm
 
-1. `yarn build`
-2. `yarn generate`
-3. `yarn start`
+1. `npm run build`
+2. `npm run generate`
+3. `npm run start`
 
 ## Deploying Your Site
 
