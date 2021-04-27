@@ -36,7 +36,13 @@ export default {
   },
 
   head: {
-    link: [],
+    link: [
+      {
+        rel: "icon",
+        type: "image/x-icon",
+        href: "/favicon.ico",
+      },
+    ],
   },
   css: [],
   googleFonts: {
