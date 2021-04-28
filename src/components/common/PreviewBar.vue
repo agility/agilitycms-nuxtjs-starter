@@ -37,7 +37,7 @@
         </div>
         <div>
           <a
-            href="https://github.com/agilitycms/agilitycms-nuxtjs-starter"
+            href="https://github.com/agility/agilitycms-nuxtjs-starter"
             target="_blank"
             rel="noreferrer"
             title="View on GitHub"
