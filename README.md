@@ -68,9 +68,7 @@ When running your site in `production` mode, you will see the published from the
 
 Nuxt.js allows you to deploy your site as a `statically generated` site or as a `server-side rendered` site.
 
-[Deploy your Nuxt.js site to Netlify (Static)](https://nuxtjs.org/docs/2.x/deployment/netlify-deployment/)
-
-[Deploy your Nuxt.js site to Vercel (Static & Server)](https://nuxtjs.org/docs/2.x/deployment/vercel-deployment)
+[Deploying your Nuxt.js Site](https://help.agilitycms.com/hc/en-us/articles/360060102952)
 
 ## Notes
 
