@@ -1,5 +1,5 @@
 <template>
-  <div class="relative px-8 mb-8" v-if="selectedFeaturedPost">
+  <div class="relative px-8 mb-8" v-if="fields !== null">
     <div class="flex flex-col sm:flex-row max-w-screen-xl mx-auto pt-8 group">
       <div class="sm:w-1/2 lg:w-2/3 sm:rounded-t-none sm:rounded-l-lg relative">
         <a :href="`/blog/${fields.slug}`" class="cursor-pointer">
@@ -58,15 +58,14 @@ export default {
   },
   computed: {
     fields: function() {
-      return this.item.fields.featuredPost.fields;
+      if (this.item.fields.featuredPost) {
+        return this.item.fields.featuredPost.fields;
+      } else {
+        return null;
+      }
     },
     date: function() {
-      return new Date(this.fields.date).toLocaleDateString();
-    },
-    selectedFeaturedPost: function() {
-      if (this.fields) {
-        return true;
-      }
+      return new Date(this.fields?.date).toLocaleDateString();
     },
   },
 };
