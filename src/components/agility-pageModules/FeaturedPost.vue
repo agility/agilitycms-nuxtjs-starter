@@ -20,7 +20,7 @@
           <div
             class="font-display uppercase text-primary-500 text-xs font-bold tracking-widest leading-loose after:content"
           >
-            {{ fields.category.fields.title }}
+            {{ category }}
           </div>
           <div class="border-b-2 border-primary-500 w-8"></div>
           <div
@@ -66,6 +66,13 @@ export default {
     },
     date: function() {
       return new Date(this.fields?.date).toLocaleDateString();
+    },
+    category: function() {
+      if (this.fields.category) {
+        return this.fields.category.fields.title;
+      } else {
+        return "Uncategorized";
+      }
     },
   },
 };

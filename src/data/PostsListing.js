@@ -25,6 +25,8 @@ export default async ({ $agility }) => {
       // find matching category
       post.linkedCategory = categories?.find((c) => c.contentID == categoryID);
 
+      post.category = post.linkedCategory?.fields.title || "Uncategorized";
+
       // format date
       post.formattedDate = new Date(post.fields.date).toLocaleDateString();
 

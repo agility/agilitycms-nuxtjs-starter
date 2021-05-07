@@ -34,7 +34,7 @@
                   <div
                     class="uppercase text-primary-500 text-xs font-bold tracking-widest leading-loose"
                   >
-                    {{ post.linkedCategory.fields.title }}
+                    {{ post.category }}
                   </div>
                   <div class="border-b-2 border-primary-500 w-8"></div>
                   <div
