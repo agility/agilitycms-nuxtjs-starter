@@ -9,7 +9,7 @@
 		"start": "nuxt start"
 	},
 	"dependencies": {
-		"@agility/agilitycms-nuxt-module": "^1.0.10",
+		"@agility/agilitycms-nuxt-module": "^1.0.14",
 		"@fortawesome/free-brands-svg-icons": "^5.15.3",
 		"@fortawesome/free-solid-svg-icons": "^5.15.3",
 		"nuxt": "^2.15.3",
