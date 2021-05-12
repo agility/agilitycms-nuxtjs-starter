@@ -5,8 +5,10 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "nuxt",
-		"build": "nuxt generate",
+		"build": "nuxt build",
+		"generate": "nuxt generate",
 		"start": "nuxt start"
+
 	},
 	"dependencies": {
 		"@agility/agilitycms-nuxt-module": "^1.0.14",
