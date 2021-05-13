@@ -11,7 +11,7 @@ This is sample Nuxt.js starter site that uses Agility CMS and aims to be a found
 - Uses [`@agility/agilitycms-nuxt-module`](https://github.com/agility/agilitycms-nuxt-module) - Agility CMS integration for Nuxt.js that supports Content Sync for ultra-fast build times, full page routing and static rendering, and easy async data loading for additional components.
 - Supports full [Page Management](https://help.agilitycms.com/hc/en-us/articles/360055805831).
 - Supports Preview Mode.
-- Provides a functional structure that loads a Page Templates dynamically, and also dynamically loads and renders appropriate Agility CMS Page Modules (as React components).
+- Provides a functional structure that loads a Page Templates dynamically, and also dynamically loads and renders appropriate Agility CMS Page Modules (as Vue components).
 
 ### Tailwind CSS
 
