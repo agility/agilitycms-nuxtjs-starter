@@ -1,27 +1,28 @@
 {
-  "name": "agility-cms-nuxt-starter",
-  "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT",
-  "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "generate": "nuxt generate",
-    "start": "nuxt start"
-  },
-  "dependencies": {
-    "@agility/agilitycms-nuxt-module": "^1.0.14",
-    "@fortawesome/free-brands-svg-icons": "^5.15.3",
-    "@fortawesome/free-solid-svg-icons": "^5.15.3",
-    "nuxt": "^2.15.3",
-    "nuxt-fontawesome": "^0.4.0",
-    "truncate-html": "^1.0.3"
-  },
-  "devDependencies": {
-    "@nuxtjs/tailwindcss": "^4.2.1",
-    "@tailwindcss/typography": "^0.4.0",
-    "autoprefixer": "^10.3.7",
-    "postcss": "^8.3.11",
-    "tailwindcss": "^2.2.17"
-  }
+	"name": "agility-cms-nuxt-starter",
+	"version": "1.0.0",
+	"main": "index.js",
+	"license": "MIT",
+	"scripts": {
+		"dev": "nuxt",
+		"build": "nuxt build",
+		"generate": "nuxt generate",
+		"start": "nuxt start"
+
+	},
+	"dependencies": {
+		"@agility/agilitycms-nuxt-module": "^1.0.14",
+		"@fortawesome/free-brands-svg-icons": "^5.15.3",
+		"@fortawesome/free-solid-svg-icons": "^5.15.3",
+		"nuxt": "^2.15.3",
+		"nuxt-fontawesome": "^0.4.0",
+		"truncate-html": "^1.0.3"
+	},
+	"devDependencies": {
+		"@nuxtjs/tailwindcss": "^4.0.3",
+		"@tailwindcss/typography": "^0.4.0",
+		"autoprefixer": "^9.8.6",
+		"postcss": "^7.0.35",
+		"tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
+	}
 }
