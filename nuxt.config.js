@@ -50,8 +50,4 @@ export default {
       Inter: true,
     },
   },
-  tailwindcss: {
-    jit: true,
-    cssPath: "./src/css/global.css",
-  },
 };
