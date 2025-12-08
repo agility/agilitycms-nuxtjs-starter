@@ -4,29 +4,7 @@ export default {
   generate: { fallback: "404.html" },
   modules: [
     "@nuxtjs/tailwindcss",
-    "@agility/agilitycms-nuxt-module",
-    [
-      "nuxt-fontawesome",
-      {
-        component: "fa",
-        imports: [
-          {
-            set: "@fortawesome/free-solid-svg-icons",
-            icons: ["faInfoCircle"],
-          },
-          {
-            set: "@fortawesome/free-brands-svg-icons",
-            icons: [
-              "faTwitter",
-              "faInstagram",
-              "faSlack",
-              "faYoutube",
-              "faGithub",
-            ],
-          },
-        ],
-      },
-    ],
+    "@agility/agilitycms-nuxt-module"
   ],
   agilitycms: {
     channelName: "website",
