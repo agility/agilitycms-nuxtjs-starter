@@ -13,6 +13,8 @@ export default {
     pageComponentPath: "src/AgilityPage.vue",
   },
 
+  buildDir: 'dist',
+
   head: {
     link: [
       {

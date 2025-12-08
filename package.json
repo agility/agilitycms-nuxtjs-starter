@@ -3,6 +3,10 @@
 	"version": "1.0.0",
 	"main": "index.js",
 	"license": "MIT",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/agility/agilitycms-nuxtjs-starter.git"
+	},
 	"scripts": {
 		"dev": "nuxt",
 		"prebuildX": "tailwindcss -i ./src/css/global.css -o ./src/css/output.css",
