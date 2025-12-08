@@ -5,24 +5,22 @@
 	"license": "MIT",
 	"scripts": {
 		"dev": "nuxt",
+		"prebuildX": "tailwindcss -i ./src/css/global.css -o ./src/css/output.css",
 		"build": "nuxt build",
 		"generate": "nuxt generate",
 		"start": "nuxt start"
-
 	},
 	"dependencies": {
 		"@agility/agilitycms-nuxt-module": "^1.0.14",
-		"@fortawesome/free-brands-svg-icons": "^5.15.3",
-		"@fortawesome/free-solid-svg-icons": "^5.15.3",
 		"nuxt": "^2.15.3",
-		"nuxt-fontawesome": "^0.4.0",
 		"truncate-html": "^1.0.3"
 	},
 	"devDependencies": {
+		"@nuxt/postcss8": "^1.1.3",
 		"@nuxtjs/tailwindcss": "^4.0.3",
-		"@tailwindcss/typography": "^0.4.0",
+		"@tailwindcss/typography": "^0.5.19",
 		"autoprefixer": "^9.8.6",
-		"postcss": "^7.0.35",
-		"tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.1.2"
+		"postcss": "8.1",
+		"tailwindcss": "^3.4.18"
 	}
 }
