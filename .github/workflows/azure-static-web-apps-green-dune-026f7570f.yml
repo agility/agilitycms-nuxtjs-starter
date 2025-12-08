@@ -1,4 +1,4 @@
-name: Azure Static Web Apps CI/CD
+name: Azure Static Web Apps CI/CD (NuxtJS-Starter 2)
 
 on:
   push:
