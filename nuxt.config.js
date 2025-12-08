@@ -34,4 +34,7 @@ export default {
     jit: true,
     cssPath: "./src/css/global.css",
   },
+  redirect: [
+    { from: '^/myoldurl', to: '/mynewurl', statusCode: 301 }
+  ]
 };
