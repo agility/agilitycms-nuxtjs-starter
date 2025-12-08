@@ -25,7 +25,7 @@ jobs:
       - name: Install OIDC Client from Core Package
         run: npm install @actions/core@1.6.0 @actions/http-client
       - name: Build to Dist Folder
-        run: npm run build
+        run: npm run generate
       - name: Get Id Token
         uses: actions/github-script@v6
         id: idtoken
