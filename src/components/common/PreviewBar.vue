@@ -1,5 +1,5 @@
 <template>
-	<div class="bg-agility relative px-8 text-gray-200">
+	<div class="bg-agility relative px-8 text-white">
 		<div class="flex justify-between items-center max-w-screen-xl mx-auto">
 			<div class="flex items-center">
 				<span class="p-2 rounded-lg mr-4">
@@ -20,7 +20,7 @@
 						title="Help Center"
 						class="text-2xl"
 					>
-						<div class="flex items-center">
+						<div class="flex items-center whitespace-nowrap">
 							<svg
 								aria-hidden="true"
 								focusable="false"
@@ -29,7 +29,7 @@
 								role="img"
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 512 512"
-								class="mr-2 svg-inline--fa fa-info-circle fa-w-16"
+								class="mr-2 svg-inline--fa fa-info-circle fa-w-16 h-4 w-4"
 							>
 								<path
 									fill="currentColor"
@@ -49,7 +49,7 @@
 						title="View on GitHub"
 						class="text-2xl"
 					>
-						<div class="flex items-center">
+						<div class="flex items-center whitespace-nowrap">
 							<svg
 								aria-hidden="true"
 								focusable="false"
@@ -58,7 +58,7 @@
 								role="img"
 								xmlns="http://www.w3.org/2000/svg"
 								viewBox="0 0 496 512"
-								class="mr-2 svg-inline--fa fa-github fa-w-16"
+								class="mr-2 svg-inline--fa fa-github fa-w-16 w-4 h-4"
 							>
 								<path
 									fill="currentColor"
