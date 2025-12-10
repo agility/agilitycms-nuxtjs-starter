@@ -62,6 +62,21 @@ async function generateStaticWebAppConfig() {
 				// - destinationUrl: the target URL (may start with ~/ which means relative to site root)
 				// - statusCode: the HTTP status code (301, 302, etc.)
 
+				// Normalize the origin URL for Azure Static Web Apps:
+				// 1. First decode any existing encoding (e.g., %20 -> space)
+				// 2. Then encode properly for URL matching
+				// This ensures consistent URL encoding for route matching
+				let originUrl = redirect.originUrl;
+				try {
+					// Decode first to normalize (handles already-encoded URLs like /test%203)
+					originUrl = decodeURIComponent(originUrl);
+				} catch (e) {
+					// If decoding fails, use as-is
+				}
+				// Encode the URL path (handles special chars like é -> %C3%A9)
+				// encodeURI handles the full path, preserving /
+				originUrl = encodeURI(originUrl);
+
 				// Convert ~/ prefix to / for Azure Static Web Apps
 				let destinationUrl = redirect.destinationUrl;
 				if (destinationUrl.startsWith("~/")) {
@@ -69,12 +84,12 @@ async function generateStaticWebAppConfig() {
 				}
 
 				const route = {
-					route: redirect.originUrl,
+					route: originUrl,
 					redirect: destinationUrl,
 					statusCode: redirect.statusCode || 301,
 				};
 
-				console.log(`   ${route.route} → ${route.redirect} (${route.statusCode})`);
+				console.log(`   ${redirect.originUrl} → ${route.route} → ${route.redirect} (${route.statusCode})`);
 				routes.push(route);
 			}
 		}

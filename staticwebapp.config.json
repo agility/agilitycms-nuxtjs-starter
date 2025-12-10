@@ -6,7 +6,7 @@
       "statusCode": 301
     },
     {
-      "route": "/tést-2",
+      "route": "/t%C3%A9st-2",
       "redirect": "/blog",
       "statusCode": 301
     },
