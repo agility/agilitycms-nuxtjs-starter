@@ -12,8 +12,9 @@
 	},
 	"scripts": {
 		"dev": "nuxt",
-		"prebuildX": "tailwindcss -i ./src/css/global.css -o ./src/css/output.css",
+		"prebuild": "node scripts/generate-static-web-app-config.js",
 		"build": "nuxt build",
+		"pregenerate": "node scripts/generate-static-web-app-config.js",
 		"generate": "nuxt generate",
 		"start": "nuxt start"
 	},
@@ -24,14 +25,15 @@
 		"webpack": "^4.46.0"
 	},
 	"devDependencies": {
+		"@agility/content-fetch": "^1.1.5",
 		"@nuxt/postcss8": "^1.1.3",
 		"@nuxtjs/tailwindcss": "^4.0.3",
 		"@tailwindcss/typography": "^0.5.19",
 		"autoprefixer": "^9.8.6",
+		"css-loader": "^5.2.7",
 		"postcss": "^8.4.0",
 		"postcss-loader": "^4.3.0",
-		"css-loader": "^5.2.7",
-		"vue-loader": "^15.11.1",
-		"tailwindcss": "^3.4.18"
+		"tailwindcss": "^3.4.18",
+		"vue-loader": "^15.11.1"
 	}
 }
