@@ -67,6 +67,30 @@ async function generateStaticWebAppConfig() {
 				// 2. Then encode properly for URL matching
 				// This ensures consistent URL encoding for route matching
 				let originUrl = redirect.originUrl;
+
+				// ============================================================
+				// TEMPORARY FIX: Strip the host portion from origin URLs
+				// Some Agility instances return full URLs (https://example.com/path)
+				// instead of just paths (/path). Azure Static Web Apps routes
+				// only work with paths, not full URLs.
+				// TODO: Remove this once Agility API returns paths consistently
+				// ============================================================
+				try {
+					const urlObj = new URL(originUrl, "https://placeholder.com");
+					originUrl = urlObj.pathname + urlObj.search + urlObj.hash;
+				} catch (e) {
+					// If URL parsing fails, try simple string manipulation
+					if (originUrl.startsWith("http://") || originUrl.startsWith("https://")) {
+						const pathStart = originUrl.indexOf("/", originUrl.indexOf("://") + 3);
+						if (pathStart !== -1) {
+							originUrl = originUrl.substring(pathStart);
+						}
+					}
+				}
+				// ============================================================
+				// END TEMPORARY FIX
+				// ============================================================
+
 				try {
 					// Decode first to normalize (handles already-encoded URLs like /test%203)
 					originUrl = decodeURIComponent(originUrl);
