@@ -15,18 +15,5 @@
       "redirect": "/about",
       "statusCode": 301
     }
-  ],
-  "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": [
-      "/images/*.{png,jpg,gif,svg}",
-      "/css/*",
-      "/_nuxt/*"
-    ]
-  },
-  "responseOverrides": {
-    "404": {
-      "rewrite": "/404.html"
-    }
-  }
+  ]
 }

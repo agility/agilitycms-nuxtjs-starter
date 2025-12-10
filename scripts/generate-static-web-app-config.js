@@ -27,15 +27,7 @@ async function generateStaticWebAppConfig() {
 
 		// Generate a minimal config without redirects
 		const minimalConfig = {
-			navigationFallback: {
-				rewrite: "/index.html",
-				exclude: ["/images/*.{png,jpg,gif,svg}", "/css/*", "/_nuxt/*"],
-			},
-			responseOverrides: {
-				404: {
-					rewrite: "/404.html",
-				},
-			},
+			routes: [],
 		};
 
 		writeConfig(minimalConfig);
@@ -82,6 +74,7 @@ async function generateStaticWebAppConfig() {
 					statusCode: redirect.statusCode || 301,
 				};
 
+				console.log(`   ${route.route} → ${route.redirect} (${route.statusCode})`);
 				routes.push(route);
 			}
 		}
@@ -89,15 +82,6 @@ async function generateStaticWebAppConfig() {
 		// Build the complete staticwebapp.config.json
 		const config = {
 			routes: routes,
-			navigationFallback: {
-				rewrite: "/index.html",
-				exclude: ["/images/*.{png,jpg,gif,svg}", "/css/*", "/_nuxt/*"],
-			},
-			responseOverrides: {
-				404: {
-					rewrite: "/404.html",
-				},
-			},
 		};
 
 		writeConfig(config);
@@ -109,15 +93,7 @@ async function generateStaticWebAppConfig() {
 
 		// Generate a minimal config without redirects on error
 		const minimalConfig = {
-			navigationFallback: {
-				rewrite: "/index.html",
-				exclude: ["/images/*.{png,jpg,gif,svg}", "/css/*", "/_nuxt/*"],
-			},
-			responseOverrides: {
-				404: {
-					rewrite: "/404.html",
-				},
-			},
+			routes: [],
 		};
 
 		writeConfig(minimalConfig);
