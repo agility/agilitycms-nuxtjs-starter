@@ -1,9 +1,9 @@
 {
-  "name": "api",
-  "version": "1.0.0",
-  "description": "Azure Functions for URL redirects",
-  "engines": {
-    "node": ">=18.0.0"
-  },
-  "dependencies": {}
+	"name": "api",
+	"version": "1.0.0",
+	"description": "Azure Functions for URL redirects",
+	"engines": {
+		"node": ">=18.0.0"
+	},
+	"dependencies": {}
 }
