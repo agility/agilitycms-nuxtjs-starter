@@ -1,0 +1,10 @@
+{
+	"IsEncrypted": false,
+	"Values": {
+		"AzureWebJobsStorage": "",
+		"FUNCTIONS_WORKER_RUNTIME": "node",
+		"GITHUB_TOKEN": "",
+		"GITHUB_REPOSITORY": "agility/agilitycms-nuxtjs-starter",
+		"AGILITY_WEBHOOK_SECRET": ""
+	}
+}

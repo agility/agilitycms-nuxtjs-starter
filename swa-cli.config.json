@@ -10,7 +10,7 @@
       "appBuildCommand": "npm run build",
       "appDevCommand": "npm run dev",
       "apiBuildCommand": "",
-      "apiDevCommand": "func start"
+      "apiDevCommand": "cd api && func start"
     }
   }
 }
