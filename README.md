@@ -21,7 +21,7 @@ It also comes equipped with [Autoprefixer](https://www.npmjs.com/package/autopre
 
 ## Getting Started
 
-To start using the Agility CMS & Gatsby Starter, [sign up](https://agilitycms.com/free) for a FREE account and create a new Instance using the Blog Template.
+To start using the Agility CMS & Nuxt.js Starter, [sign up](https://agilitycms.com/free) for a FREE account and create a new Instance using the Blog Template.
 
 1. Clone this repository
 2. Run `npm install` or `yarn install`

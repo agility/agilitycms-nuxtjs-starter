@@ -2,27 +2,17 @@
 
 This guide explains how to run your Nuxt app with Azure Static Web Apps emulation locally.
 
-## Quick Start
+## Prerequisites
 
-### Option 1: Simple Setup (API folder only, no separate function runtime)
-
-Run in a single terminal:
+Before using local emulation, install the required dependencies:
 
 ```bash
-npm run dev:swa
+npm install -D @azure/static-web-apps-cli
 ```
 
-This starts:
+## Quick Start
 
-- Nuxt dev server on `http://localhost:3000`
-- Azure Static Web Apps CLI on `http://localhost:4280`
-- Your Azure Functions from the `./api` folder
-
-Access your app at **`http://localhost:4280`**
-
-### Option 2: Full Setup (with separate Azure Functions runtime)
-
-This option runs the Azure Functions runtime separately, useful for debugging.
+Run in two terminals:
 
 **Terminal 1: Start Nuxt dev server**
 
@@ -30,31 +20,31 @@ This option runs the Azure Functions runtime separately, useful for debugging.
 npm run dev
 ```
 
-**Terminal 2: Start Azure Functions locally**
+**Terminal 2: Start SWA CLI (in a new terminal)**
 
 ```bash
-func start
-```
-
-**Terminal 3: Start SWA CLI**
-
-```bash
-npm run dev:swa:func
+npm run dev:swa
 ```
 
 Access your app at **`http://localhost:4280`**
+
+This starts:
+
+- Nuxt dev server on `http://localhost:3000`
+- Azure Static Web Apps CLI on `http://localhost:4280`
+- Your Azure Functions from the `./api` folder
 
 ## What Gets Emulated
 
 - ✅ Your `staticwebapp.config.json` rules (routes, redirects)
 - ✅ Navigation fallback to `/api/redirect` for your redirect logic
-- ✅ Static asset exclusions (CSS, images, fonts, etc.)
+- ✅ Static asset exclusions (CSS, images, fonts, HTML, etc.)
 - ✅ Azure Functions API endpoints
 - ✅ Authentication/authorization (test at `/.auth/login/github`)
 
 ## Testing Redirects
 
-Your 2,442 redirects from `api/redirects.json` are loaded by the `/api/redirect` endpoint.
+Your redirects from `api/redirects.json` are loaded by the `/api/redirect` endpoint.
 
 Try a test redirect:
 
@@ -73,17 +63,11 @@ The SWA CLI configuration is in `swa-cli.config.json`. Key settings:
 - `apiLocation`: `api` (Azure Functions folder)
 - `outputLocation`: `dist` (built output)
 
-## Prerequisites
-
-- Node.js (v18+)
-- npm
-- Azure Functions Core Tools (optional, for Option 2 - will be auto-installed if needed)
-
 ## Debugging
 
 - **Frontend**: Use browser DevTools normally
-- **API Functions**: Attach VS Code debugger to port 9229 when running `func start` with debug flag
-- **Logs**: Check terminal output for SWA CLI logs
+- **API Functions**: Check terminal output for logs from the Azure Functions runtime
+- **SWA CLI Logs**: Check the SWA CLI terminal for routing and configuration logs
 
 ## Port Mapping
 
@@ -93,4 +77,4 @@ The SWA CLI configuration is in `swa-cli.config.json`. Key settings:
 | Azure Functions | 7071 | `http://localhost:7071`            |
 | SWA CLI (proxy) | 4280 | `http://localhost:4280` (USE THIS) |
 
-Access your app through port **4280**, not 3000.
+**Important:** Always access your app through port **4280**, not 3000. This ensures Azure Static Web Apps routing rules are applied.
