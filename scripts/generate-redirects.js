@@ -1,10 +1,8 @@
 /**
- * Pre-build script to generate Azure Static Web Apps configuration
- * with redirects from Agility CMS.
+ * Pre-build script to generate URL redirects from Agility CMS.
  *
- * This script fetches URL redirections from Agility CMS and:
- * 1. Generates a redirects.json file for the Azure Function to use
- * 2. Generates a staticwebapp.config.json with a catch-all route to the API
+ * This script fetches URL redirections from Agility CMS and generates
+ * a redirects.json file for the Azure Function to use at runtime.
  *
  * This approach allows unlimited redirects since the Azure Function
  * handles them dynamically (no 20KB config file limit).
@@ -17,7 +15,7 @@ const agility = require("@agility/content-fetch");
 const fs = require("fs");
 const path = require("path");
 
-async function generateStaticWebAppConfig() {
+async function generateRedirects() {
 	// Get environment variables for Agility CMS
 	const guid = process.env.AGILITY_GUID;
 	const apiKey =
@@ -27,10 +25,9 @@ async function generateStaticWebAppConfig() {
 		console.warn(
 			"⚠️  AGILITY_GUID and AGILITY_API_FETCH_KEY environment variables are required to fetch redirects."
 		);
-		console.warn("   Generating config files without redirects.");
+		console.warn("   Generating redirects.json with empty array.");
 
 		writeRedirectsJson([]);
-		writeStaticWebAppConfig();
 		return;
 	}
 
@@ -100,16 +97,12 @@ async function generateStaticWebAppConfig() {
 		// Write the redirects JSON file for the Azure Function
 		writeRedirectsJson(redirects);
 
-		// Write the staticwebapp.config.json
-		writeStaticWebAppConfig();
-
-		console.log(`✅ Generated config files with ${redirects.length} redirects.`);
+		console.log(`✅ Generated redirects.json with ${redirects.length} redirects.`);
 	} catch (error) {
 		console.error("❌ Error fetching redirects from Agility CMS:", error.message);
-		console.warn("   Generating config files without redirects.");
+		console.warn("   Generating redirects.json with empty array.");
 
 		writeRedirectsJson([]);
-		writeStaticWebAppConfig();
 	}
 }
 
@@ -130,48 +123,5 @@ function writeRedirectsJson(redirects) {
 	console.log(`📝 Wrote ${redirects.length} redirects to: ${outputPath}`);
 }
 
-/**
- * Write the staticwebapp.config.json file.
- * This configures Azure Static Web Apps to use the redirect API function.
- */
-function writeStaticWebAppConfig() {
-	const config = {
-		routes: [
-			{
-				route: "/api/*",
-				allowedRoles: ["anonymous"]
-			}
-		],
-		navigationFallback: {
-			rewrite: "/api/redirect",
-			exclude: [
-				"/_nuxt/*",
-				"/images/*",
-				"/css/*",
-				"/*.ico",
-				"/*.png",
-				"/*.jpg",
-				"/*.jpeg",
-				"/*.gif",
-				"/*.svg",
-				"/*.js",
-				"/*.css",
-				"/*.woff",
-				"/*.woff2",
-				"/*.ttf",
-				"/*.eot"
-			]
-		},
-		platform: {
-			apiRuntime: "node:18"
-		}
-	};
-
-	const outputPath = path.join(process.cwd(), "staticwebapp.config.json");
-	fs.writeFileSync(outputPath, JSON.stringify(config, null, 2), "utf8");
-
-	console.log(`📝 Wrote configuration to: ${outputPath}`);
-}
-
 // Run the script
-generateStaticWebAppConfig();
+generateRedirects();

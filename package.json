@@ -15,8 +15,8 @@
 		"build": "nuxt build",
 		"generate": "nuxt generate",
 		"start": "nuxt start",
-		"prebuild": "node scripts/generate-static-web-app-config.js",
-		"pregenerate": "node scripts/generate-static-web-app-config.js",
+		"prebuild": "node scripts/generate-redirects.js",
+		"pregenerate": "node scripts/generate-redirects.js",
 		"dev:swa": "swa start http://localhost:3000 --api-location ./api"
 	},
 	"dependencies": {

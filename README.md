@@ -90,11 +90,11 @@ If you plan to deploy to Azure Static Web Apps:
    npm install -D @azure/static-web-apps-cli concurrently dotenv
    ```
 
-2. The pre-build script will automatically generate redirects from Agility CMS and create the required configuration files:
+2. The pre-build script will automatically generate redirects from Agility CMS:
 
-   - `staticwebapp.config.json` - Azure SWA routing configuration
    - `api/redirects.json` - Generated list of all redirects from your CMS
    - `api/redirect/index.js` - Azure Function that handles redirect matching
+   - `staticwebapp.config.json` - Azure SWA routing configuration (already included in the starter)
 
 3. **Important:** Add your Agility CMS credentials to `.env`:
    ```

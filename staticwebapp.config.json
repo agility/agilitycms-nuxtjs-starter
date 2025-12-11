@@ -24,7 +24,8 @@
       "/*.woff",
       "/*.woff2",
       "/*.ttf",
-      "/*.eot"
+      "/*.eot",
+      "/*.html"
     ]
   },
   "platform": {
