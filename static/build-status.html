@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Build Status - Agility CMS Starter</title>
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+				box-sizing: border-box;
+			}
+
+			body {
+				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+				min-height: 100vh;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 20px;
+			}
+
+			.container {
+				background: white;
+				border-radius: 12px;
+				box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+				max-width: 800px;
+				width: 100%;
+				padding: 40px;
+			}
+
+			h1 {
+				color: #2d3748;
+				font-size: 2rem;
+				margin-bottom: 8px;
+			}
+
+			.subtitle {
+				color: #718096;
+				font-size: 1rem;
+				margin-bottom: 32px;
+			}
+
+			.status-section {
+				background: #f7fafc;
+				border-radius: 8px;
+				padding: 24px;
+				margin-bottom: 24px;
+			}
+
+			.status-section h2 {
+				color: #2d3748;
+				font-size: 1.25rem;
+				margin-bottom: 16px;
+				display: flex;
+				align-items: center;
+				gap: 8px;
+			}
+
+			.badge-container {
+				display: flex;
+				flex-direction: column;
+				gap: 12px;
+				margin-bottom: 16px;
+			}
+
+			.badge-row {
+				display: flex;
+				align-items: center;
+				gap: 12px;
+				flex-wrap: wrap;
+			}
+
+			.badge-label {
+				color: #4a5568;
+				font-weight: 500;
+				min-width: 100px;
+			}
+
+			.badge-link {
+				display: inline-block;
+			}
+
+			.badge-link img {
+				height: 20px;
+				vertical-align: middle;
+			}
+
+			.info-box {
+				background: white;
+				border-left: 4px solid #4299e1;
+				padding: 16px;
+				margin-top: 16px;
+				border-radius: 4px;
+			}
+
+			.info-box p {
+				color: #4a5568;
+				line-height: 1.6;
+				margin-bottom: 8px;
+			}
+
+			.info-box p:last-child {
+				margin-bottom: 0;
+			}
+
+			.status-indicator {
+				display: inline-block;
+				width: 10px;
+				height: 10px;
+				border-radius: 50%;
+				margin-right: 8px;
+			}
+
+			.status-indicator.loading {
+				background: #ecc94b;
+				animation: pulse 2s ease-in-out infinite;
+			}
+
+			@keyframes pulse {
+				0%,
+				100% {
+					opacity: 1;
+				}
+				50% {
+					opacity: 0.5;
+				}
+			}
+
+			.links-section {
+				border-top: 1px solid #e2e8f0;
+				padding-top: 24px;
+				margin-top: 24px;
+			}
+
+			.links-section h3 {
+				color: #2d3748;
+				font-size: 1rem;
+				margin-bottom: 12px;
+			}
+
+			.links-section ul {
+				list-style: none;
+				padding: 0;
+			}
+
+			.links-section li {
+				margin-bottom: 8px;
+			}
+
+			.links-section a {
+				color: #4299e1;
+				text-decoration: none;
+				display: inline-flex;
+				align-items: center;
+				gap: 6px;
+			}
+
+			.links-section a:hover {
+				color: #2b6cb0;
+				text-decoration: underline;
+			}
+
+			.icon {
+				width: 16px;
+				height: 16px;
+			}
+
+			.refresh-info {
+				text-align: center;
+				color: #718096;
+				font-size: 0.875rem;
+				margin-top: 24px;
+				padding-top: 24px;
+				border-top: 1px solid #e2e8f0;
+			}
+
+			.code-snippet {
+				background: #2d3748;
+				color: #e2e8f0;
+				padding: 12px;
+				border-radius: 6px;
+				font-family: "Monaco", "Courier New", monospace;
+				font-size: 0.875rem;
+				overflow-x: auto;
+				margin-top: 12px;
+			}
+
+			@media (max-width: 640px) {
+				.container {
+					padding: 24px;
+				}
+
+				h1 {
+					font-size: 1.5rem;
+				}
+
+				.badge-row {
+					flex-direction: column;
+					align-items: flex-start;
+				}
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h1>🚀 Build & Deployment Status</h1>
+			<p class="subtitle">Agility CMS + Nuxt.js Starter</p>
+
+			<div class="status-section">
+				<h2>
+					<span class="status-indicator loading"></span>
+					Current Build Status
+				</h2>
+
+				<div class="badge-container">
+					<div class="badge-row">
+						<span class="badge-label">Main Branch:</span>
+						<a
+							href="https://github.com/agility/agilitycms-nuxtjs-starter/actions/workflows/azure-static-web-apps-green-dune-026f7570f.yml"
+							class="badge-link"
+							target="_blank"
+							rel="noopener"
+						>
+							<img
+								src="https://github.com/agility/agilitycms-nuxtjs-starter/actions/workflows/azure-static-web-apps-green-dune-026f7570f.yml/badge.svg?branch=main"
+								alt="Build Status"
+							/>
+						</a>
+					</div>
+				</div>
+
+				<div class="info-box">
+					<p><strong>What does this mean?</strong></p>
+					<p>✅ <strong>Passing</strong> - Latest deployment successful, site is up-to-date</p>
+					<p>🔄 <strong>In Progress</strong> - Build is currently running</p>
+					<p>❌ <strong>Failing</strong> - Build failed, site may show older content</p>
+				</div>
+			</div>
+
+			<div class="status-section">
+				<h2>📝 How Deployments Work</h2>
+				<div class="info-box">
+					<p>
+						<strong>Automatic Builds:</strong> When content is published in Agility CMS, a webhook triggers an automatic
+						rebuild and deployment.
+					</p>
+					<p>
+						<strong>Debouncing:</strong> Multiple rapid content changes are batched together to prevent build storms
+						(60-second window).
+					</p>
+					<p><strong>Build Time:</strong> Typical builds complete in 2-4 minutes.</p>
+					<p><strong>Caching:</strong> Content and dependencies are cached to speed up subsequent builds.</p>
+				</div>
+			</div>
+
+			<div class="status-section">
+				<h2>🔗 Webhook Endpoint</h2>
+				<div class="info-box">
+					<p><strong>Production Webhook URL:</strong></p>
+					<div class="code-snippet">
+						https://green-dune-026f7570f.3.azurestaticapps.net/api/agility-webhook?secret=YOUR_SECRET
+					</div>
+					<p style="margin-top: 12px"><strong>Status:</strong> Active and monitoring content changes</p>
+				</div>
+			</div>
+
+			<div class="links-section">
+				<h3>📚 Useful Links</h3>
+				<ul>
+					<li>
+						<a href="https://github.com/agility/agilitycms-nuxtjs-starter/actions" target="_blank" rel="noopener">
+							<svg class="icon" fill="currentColor" viewBox="0 0 16 16">
+								<path
+									d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"
+								/>
+							</svg>
+							View GitHub Actions History
+						</a>
+					</li>
+					<li>
+						<a href="https://github.com/agility/agilitycms-nuxtjs-starter" target="_blank" rel="noopener">
+							<svg class="icon" fill="currentColor" viewBox="0 0 16 16">
+								<path
+									d="M2 2.5A2.5 2.5 0 014.5 0h8.75a.75.75 0 01.75.75v12.5a.75.75 0 01-.75.75h-2.5a.75.75 0 110-1.5h1.75v-2h-8a1 1 0 00-.714 1.7.75.75 0 01-1.072 1.05A2.495 2.495 0 012 11.5v-9zm10.5-1V9h-8c-.356 0-.694.074-1 .208V2.5a1 1 0 011-1h8zM5 12.25v3.25a.25.25 0 00.4.2l1.45-1.087a.25.25 0 01.3 0L8.6 15.7a.25.25 0 00.4-.2v-3.25a.25.25 0 00-.25-.25h-3.5a.25.25 0 00-.25.25z"
+								/>
+							</svg>
+							Repository Documentation
+						</a>
+					</li>
+					<li>
+						<a
+							href="https://portal.azure.com/#@agilitycms.com/resource/subscriptions/959d9164-de2e-444e-b3b4-8c106576235e/resourceGroups/Development-Hosting/providers/Microsoft.Web/staticSites/NuxtJS-Starter-2/staticsite"
+							target="_blank"
+							rel="noopener"
+						>
+							<svg class="icon" fill="currentColor" viewBox="0 0 16 16">
+								<path d="M0 1a1 1 0 011-1h14a1 1 0 011 1v14a1 1 0 01-1 1H1a1 1 0 01-1-1V1zm2 0v14h12V1H2z" />
+								<path
+									d="M8 4a.5.5 0 01.5.5v3h3a.5.5 0 010 1h-3v3a.5.5 0 01-1 0v-3h-3a.5.5 0 010-1h3v-3A.5.5 0 018 4z"
+								/>
+							</svg>
+							Azure Static Web App Portal
+						</a>
+					</li>
+					<li>
+						<a href="/" rel="noopener">
+							<svg class="icon" fill="currentColor" viewBox="0 0 16 16">
+								<path
+									d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 00.5.5h4a.5.5 0 00.5-.5v-7a.5.5 0 00-.146-.354L13 5.793V2.5a.5.5 0 00-.5-.5h-1a.5.5 0 00-.5.5v1.293L8.354 1.146a.5.5 0 00-.708 0l-6 6A.5.5 0 001.5 7.5v7a.5.5 0 00.5.5h4a.5.5 0 00.5-.5z"
+								/>
+							</svg>
+							Back to Home
+						</a>
+					</li>
+				</ul>
+			</div>
+
+			<div class="refresh-info">
+				<p>This page shows real-time build status from GitHub Actions.</p>
+				<p>Refresh the page to see the latest status.</p>
+			</div>
+		</div>
+
+		<script>
+			// Auto-refresh every 30 seconds to show latest status
+			const AUTO_REFRESH_INTERVAL = 30000 // 30 seconds
+
+			// Add timestamp to prevent badge caching
+			function refreshBadge() {
+				const badges = document.querySelectorAll(".badge-link img")
+				badges.forEach((badge) => {
+					const src = badge.src.split("?")[0]
+					badge.src = src + "?t=" + Date.now()
+				})
+			}
+
+			// Refresh badge on page load
+			refreshBadge()
+
+			// Optional: Auto-refresh the entire page every 30 seconds
+			// Uncomment the line below to enable auto-refresh
+			// setInterval(() => location.reload(), AUTO_REFRESH_INTERVAL);
+
+			// Refresh just the badge every 15 seconds (less intrusive)
+			setInterval(refreshBadge, 15000)
+		</script>
+	</body>
+</html>
