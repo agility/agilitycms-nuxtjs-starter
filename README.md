@@ -1,5 +1,7 @@
 # Agility CMS & Nuxt.js Starter
 
+[![Deploy Status](https://github.com/agility/agilitycms-nuxtjs-starter/actions/workflows/azure-static-web-apps-green-dune-026f7570f.yml/badge.svg?branch=main)](https://github.com/agility/agilitycms-nuxtjs-starter/actions)
+
 This is sample Nuxt.js starter site that uses Agility CMS and aims to be a foundation for building websites using Nuxt.js and Agility CMS.
 
 [Live Website Demo](https://agilitycms-nuxtjs-starter.vercel.app/)
