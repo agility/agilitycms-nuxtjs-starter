@@ -1,7 +1,5 @@
 const https = require('https');
 
-// In-memory cache for debouncing (will be reset on function cold start)
-let lastTriggerTime = 0;
 const DEBOUNCE_DELAY_MS = 60000; // 1 minute - adjust as needed
 
 /**
@@ -9,27 +7,31 @@ const DEBOUNCE_DELAY_MS = 60000; // 1 minute - adjust as needed
  * with debouncing to prevent multiple builds from rapid content updates.
  *
  * Debouncing strategy:
- * - If multiple webhooks arrive within DEBOUNCE_DELAY_MS, only the FIRST one triggers a build
- * - Subsequent calls within the window are acknowledged but don't trigger builds
- * - This prevents build storms when editors make many rapid changes
- *
- * Alternative: Use Azure Storage Table for persistent debouncing across function instances
+ * - Uses GitHub Actions concurrency control as primary debounce mechanism
+ * - In-memory fallback for basic protection (resets on cold starts)
+ * - Multiple webhook calls are OK - GitHub will cancel redundant builds
  */
+
+// In-memory fallback (unreliable across instances, but better than nothing)
+let lastTriggerTime = 0;
+
 module.exports = async function (context, req) {
 	context.log('Agility CMS webhook received');
 
 	const now = Date.now();
 	const timeSinceLastTrigger = now - lastTriggerTime;
 
-	// Check if we're within the debounce window
+	// Simple in-memory debounce (NOTE: not reliable across function instances)
+	// The real debouncing happens via GitHub Actions concurrency control
 	if (timeSinceLastTrigger < DEBOUNCE_DELAY_MS && lastTriggerTime > 0) {
-		context.log(`Debounced: ${timeSinceLastTrigger}ms since last trigger (threshold: ${DEBOUNCE_DELAY_MS}ms)`);
+		context.log(`Debounced (in-memory): ${timeSinceLastTrigger}ms since last trigger (threshold: ${DEBOUNCE_DELAY_MS}ms)`);
 		context.res = {
 			status: 202,
 			body: {
 				message: "Webhook received but debounced. Build already scheduled.",
 				debounced: true,
-				timeSinceLastTrigger: timeSinceLastTrigger
+				timeSinceLastTrigger: timeSinceLastTrigger,
+				note: "GitHub Actions concurrency control provides additional protection"
 			}
 		};
 		return;

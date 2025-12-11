@@ -8,3 +8,4 @@ public/
 dist/
 .env
 .nuxt
+api/local.settings.json

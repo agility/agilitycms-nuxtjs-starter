@@ -196,6 +196,44 @@ This means:
 - GitHub repository → Actions tab
 - Look for workflows triggered by "repository_dispatch"
 
+### Build Status Badge
+
+You can display the current build status using GitHub's status badge:
+
+**Badge URL:**
+
+```
+https://github.com/agility/agilitycms-nuxtjs-starter/actions/workflows/azure-static-web-apps-green-dune-026f7570f.yml/badge.svg?branch=main
+```
+
+**In Markdown:**
+
+```markdown
+[![Deploy Status](https://github.com/agility/agilitycms-nuxtjs-starter/actions/workflows/azure-static-web-apps-green-dune-026f7570f.yml/badge.svg?branch=main)](https://github.com/agility/agilitycms-nuxtjs-nuxtjs-starter/actions)
+```
+
+**In HTML:**
+
+```html
+<img
+	src="https://github.com/agility/agilitycms-nuxtjs-starter/actions/workflows/azure-static-web-apps-green-dune-026f7570f.yml/badge.svg?branch=main"
+	alt="Deploy Status"
+/>
+```
+
+The badge shows:
+
+- ✅ Green "passing" when builds succeed
+- ❌ Red "failing" when builds fail
+- 🟡 Yellow when build is in progress
+
+You can embed this in:
+
+- Your website's admin dashboard
+- Internal documentation
+- Agility CMS custom fields (as an image URL)
+- Status pages or monitoring tools
+
 ## Troubleshooting
 
 ### Webhook received but no build triggered
