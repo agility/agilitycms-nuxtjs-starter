@@ -5,202 +5,262 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Build Status - Agility CMS Starter</title>
 		<style>
-			* {
-				margin: 0;
-				padding: 0;
-				box-sizing: border-box;
-			}
-
-			body {
-				font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-				background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-				min-height: 100vh;
-				display: flex;
-				align-items: center;
-				justify-content: center;
-				padding: 20px;
-			}
-
-			.container {
-				background: white;
-				border-radius: 12px;
-				box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-				max-width: 800px;
-				width: 100%;
-				padding: 40px;
-			}
-
-			h1 {
-				color: #2d3748;
-				font-size: 2rem;
-				margin-bottom: 8px;
-			}
-
-			.subtitle {
-				color: #718096;
-				font-size: 1rem;
-				margin-bottom: 32px;
-			}
-
-			.status-section {
-				background: #f7fafc;
-				border-radius: 8px;
-				padding: 24px;
-				margin-bottom: 24px;
-			}
-
-			.status-section h2 {
-				color: #2d3748;
-				font-size: 1.25rem;
-				margin-bottom: 16px;
-				display: flex;
-				align-items: center;
-				gap: 8px;
-			}
-
-			.badge-container {
-				display: flex;
-				flex-direction: column;
-				gap: 12px;
-				margin-bottom: 16px;
-			}
-
-			.badge-row {
-				display: flex;
-				align-items: center;
-				gap: 12px;
-				flex-wrap: wrap;
-			}
-
-			.badge-label {
-				color: #4a5568;
-				font-weight: 500;
-				min-width: 100px;
-			}
-
-			.badge-link {
-				display: inline-block;
-			}
-
-			.badge-link img {
-				height: 20px;
-				vertical-align: middle;
-			}
-
-			.info-box {
-				background: white;
-				border-left: 4px solid #4299e1;
-				padding: 16px;
-				margin-top: 16px;
-				border-radius: 4px;
-			}
-
-			.info-box p {
-				color: #4a5568;
-				line-height: 1.6;
-				margin-bottom: 8px;
-			}
-
-			.info-box p:last-child {
-				margin-bottom: 0;
-			}
-
-			.status-indicator {
-				display: inline-block;
-				width: 10px;
-				height: 10px;
-				border-radius: 50%;
-				margin-right: 8px;
-			}
-
-			.status-indicator.loading {
-				background: #ecc94b;
-				animation: pulse 2s ease-in-out infinite;
-			}
-
-			@keyframes pulse {
-				0%,
-				100% {
-					opacity: 1;
+				* {
+					margin: 0;
+					padding: 0;
+					box-sizing: border-box;
 				}
-				50% {
-					opacity: 0.5;
+
+				body {
+					font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+					background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+					min-height: 100vh;
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					padding: 20px;
 				}
-			}
 
-			.links-section {
-				border-top: 1px solid #e2e8f0;
-				padding-top: 24px;
-				margin-top: 24px;
-			}
-
-			.links-section h3 {
-				color: #2d3748;
-				font-size: 1rem;
-				margin-bottom: 12px;
-			}
-
-			.links-section ul {
-				list-style: none;
-				padding: 0;
-			}
-
-			.links-section li {
-				margin-bottom: 8px;
-			}
-
-			.links-section a {
-				color: #4299e1;
-				text-decoration: none;
-				display: inline-flex;
-				align-items: center;
-				gap: 6px;
-			}
-
-			.links-section a:hover {
-				color: #2b6cb0;
-				text-decoration: underline;
-			}
-
-			.icon {
-				width: 16px;
-				height: 16px;
-			}
-
-			.refresh-info {
-				text-align: center;
-				color: #718096;
-				font-size: 0.875rem;
-				margin-top: 24px;
-				padding-top: 24px;
-				border-top: 1px solid #e2e8f0;
-			}
-
-			.code-snippet {
-				background: #2d3748;
-				color: #e2e8f0;
-				padding: 12px;
-				border-radius: 6px;
-				font-family: "Monaco", "Courier New", monospace;
-				font-size: 0.875rem;
-				overflow-x: auto;
-				margin-top: 12px;
-			}
-
-			@media (max-width: 640px) {
 				.container {
-					padding: 24px;
+					background: white;
+					border-radius: 12px;
+					box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+					max-width: 800px;
+					width: 100%;
+					padding: 40px;
 				}
 
 				h1 {
-					font-size: 1.5rem;
+					color: #2d3748;
+					font-size: 2rem;
+					margin-bottom: 8px;
+				}
+
+				.subtitle {
+					color: #718096;
+					font-size: 1rem;
+					margin-bottom: 32px;
+				}
+
+				.status-section {
+					background: #f7fafc;
+					border-radius: 8px;
+					padding: 24px;
+					margin-bottom: 24px;
+				}
+
+				.status-section h2 {
+					color: #2d3748;
+					font-size: 1.25rem;
+					margin-bottom: 16px;
+					display: flex;
+					align-items: center;
+					gap: 8px;
+				}
+
+				.badge-container {
+					display: flex;
+					flex-direction: column;
+					gap: 12px;
+					margin-bottom: 16px;
 				}
 
 				.badge-row {
-					flex-direction: column;
-					align-items: flex-start;
+					display: flex;
+					align-items: center;
+					gap: 12px;
+					flex-wrap: wrap;
 				}
+
+				.badge-label {
+					color: #4a5568;
+					font-weight: 500;
+					min-width: 100px;
+				}
+
+				.badge-link {
+					display: inline-block;
+				}
+
+				.badge-link img {
+					height: 20px;
+					vertical-align: middle;
+				}
+
+				.info-box {
+					background: white;
+					border-left: 4px solid #4299e1;
+					padding: 16px;
+					margin-top: 16px;
+					border-radius: 4px;
+				}
+
+				.info-box p {
+					color: #4a5568;
+					line-height: 1.6;
+					margin-bottom: 8px;
+				}
+
+				.info-box p:last-child {
+					margin-bottom: 0;
+				}
+
+				.status-indicator {
+				display: inline-flex;
+				align-items: center;
+				justify-content: center;
+				width: 20px;
+				height: 20px;
+				border-radius: 50%;
+				margin-right: 10px;
+				position: relative;
 			}
+
+			.status-indicator::before {
+				content: '';
+				position: absolute;
+			}
+
+			/* GitHub-style success checkmark */
+			.status-indicator.success {
+				background: #1a7f37;
+			}
+
+			.status-indicator.success::before {
+				width: 6px;
+				height: 10px;
+				border: solid white;
+				border-width: 0 2px 2px 0;
+				transform: rotate(45deg);
+				margin-bottom: 2px;
+			}
+
+			/* GitHub-style failure X */
+			.status-indicator.failure {
+				background: #d1242f;
+			}
+
+			.status-indicator.failure::before {
+				content: '×';
+				color: white;
+				font-size: 18px;
+				font-weight: bold;
+				line-height: 1;
+			}
+
+			/* GitHub-style spinner */
+			.status-indicator.loading {
+				background: transparent;
+				border: 2px solid #e5e7eb;
+				border-top-color: #d97706;
+				animation: github-spin 0.6s linear infinite;
+			}
+
+			.status-indicator.queued {
+				background: #9ca3af;
+			}
+
+			.status-indicator.queued::before {
+				content: '○';
+				color: white;
+				font-size: 12px;
+				font-weight: bold;
+				line-height: 1;
+			}
+
+			.status-indicator.cancelled {
+				background: #6b7280;
+			}
+
+			.status-indicator.cancelled::before {
+				content: '○';
+				color: white;
+				font-size: 14px;
+				font-weight: bold;
+				line-height: 1;
+			}
+
+			@keyframes github-spin {
+				0% {
+					transform: rotate(0deg);
+				}
+				100% {
+					transform: rotate(360deg);
+				}
+
+				.links-section {
+					border-top: 1px solid #e2e8f0;
+					padding-top: 24px;
+					margin-top: 24px;
+				}
+
+				.links-section h3 {
+					color: #2d3748;
+					font-size: 1rem;
+					margin-bottom: 12px;
+				}
+
+				.links-section ul {
+					list-style: none;
+					padding: 0;
+				}
+
+				.links-section li {
+					margin-bottom: 8px;
+				}
+
+				.links-section a {
+					color: #4299e1;
+					text-decoration: none;
+					display: inline-flex;
+					align-items: center;
+					gap: 6px;
+				}
+
+				.links-section a:hover {
+					color: #2b6cb0;
+					text-decoration: underline;
+				}
+
+				.icon {
+					width: 16px;
+					height: 16px;
+				}
+
+				.refresh-info {
+					text-align: center;
+					color: #718096;
+					font-size: 0.875rem;
+					margin-top: 24px;
+					padding-top: 24px;
+					border-top: 1px solid #e2e8f0;
+				}
+
+				.code-snippet {
+					background: #2d3748;
+					color: #e2e8f0;
+					padding: 12px;
+					border-radius: 6px;
+					font-family: "Monaco", "Courier New", monospace;
+					font-size: 0.875rem;
+					overflow-x: auto;
+					margin-top: 12px;
+				}
+
+				@media (max-width: 640px) {
+					.container {
+						padding: 24px;
+					}
+
+					h1 {
+						font-size: 1.5rem;
+					}
+
+					.badge-row {
+						flex-direction: column;
+						align-items: flex-start;
+					}
+				}
 		</style>
 	</head>
 	<body>
@@ -211,12 +271,12 @@
 			<div class="status-section">
 				<h2>
 					<span class="status-indicator loading"></span>
-					Current Build Status
+					<span id="status-heading-text">GitHub Actions Workflow Status</span>
 				</h2>
 
 				<div class="badge-container">
 					<div class="badge-row">
-						<span class="badge-label">Main Branch:</span>
+						<span class="badge-label">Workflow:</span>
 						<a
 							href="https://github.com/agility/agilitycms-nuxtjs-starter/actions/workflows/azure-static-web-apps-green-dune-026f7570f.yml"
 							class="badge-link"
@@ -225,17 +285,26 @@
 						>
 							<img
 								src="https://github.com/agility/agilitycms-nuxtjs-starter/actions/workflows/azure-static-web-apps-green-dune-026f7570f.yml/badge.svg?branch=main"
-								alt="Build Status"
+								alt="Workflow Status"
 							/>
 						</a>
 					</div>
 				</div>
 
 				<div class="info-box">
-					<p><strong>What does this mean?</strong></p>
-					<p>✅ <strong>Passing</strong> - Latest deployment successful, site is up-to-date</p>
-					<p>🔄 <strong>In Progress</strong> - Build is currently running</p>
-					<p>❌ <strong>Failing</strong> - Build failed, site may show older content</p>
+					<h3>What does this badge show?</h3>
+					<p>✅ <strong>Passing</strong> - Last GitHub Actions workflow run succeeded</p>
+					<p>🔄 <strong>In Progress</strong> - Workflow is currently running</p>
+					<p>❌ <strong>Failing</strong> - Last workflow run failed (check logs)</p>
+					<p style="margin-top: 12px">
+						<em>This tracks the entire CI/CD pipeline: build, test, and deployment to Azure Static Web Apps.</em>
+					</p>
+				</div>
+
+				<div class="info-box" style="margin-top: 16px; border-left-color: #10b981">
+					<div id="live-status-text">
+						<p><strong>Status:</strong> Loading...</p>
+					</div>
 				</div>
 			</div>
 
@@ -246,8 +315,9 @@
 					<p>📦 <strong>Content-only updates:</strong> 1-1.5 minutes (most common)</p>
 					<p>🔧 <strong>Code changes:</strong> 2-2.5 minutes</p>
 					<p>🆕 <strong>Dependency updates:</strong> ~3 minutes</p>
-					<p style="margin-top: 12px;">
-						<strong>Why so fast?</strong> Advanced caching preserves dependencies, build artifacts, and CMS content between builds. When you publish content, we only rebuild what changed!
+					<p style="margin-top: 12px">
+						<strong>Why so fast?</strong> Advanced caching preserves dependencies, build artifacts, and CMS content
+						between builds. When you publish content, we only rebuild what changed!
 					</p>
 				</div>
 			</div>
@@ -263,7 +333,10 @@
 						<strong>Debouncing:</strong> Multiple rapid content changes are batched together to prevent build storms
 						(60-second window).
 					</p>
-					<p><strong>Intelligent Caching:</strong> Smart caching system preserves dependencies, build artifacts, and CMS content between builds for maximum speed.</p>
+					<p>
+						<strong>Intelligent Caching:</strong> Smart caching system preserves dependencies, build artifacts, and CMS
+						content between builds for maximum speed.
+					</p>
 					<p><strong>Content Sync:</strong> Only changed content is re-downloaded, not the entire CMS dataset.</p>
 				</div>
 			</div>
@@ -337,27 +410,93 @@
 		</div>
 
 		<script>
-			// Auto-refresh every 30 seconds to show latest status
-			const AUTO_REFRESH_INTERVAL = 30000 // 30 seconds
+			// GitHub repository information
+			const GITHUB_REPO = "agility/agilitycms-nuxtjs-starter"
+			const WORKFLOW_FILE = "azure-static-web-apps-green-dune-026f7570f.yml"
+			const BRANCH = "main"
 
 			// Add timestamp to prevent badge caching
 			function refreshBadge() {
 				const badges = document.querySelectorAll(".badge-link img")
 				badges.forEach((badge) => {
-					const src = badge.src.split("?")[0]
-					badge.src = src + "?t=" + Date.now()
+					const baseUrl = badge.src.split("?")[0]
+					badge.src = baseUrl + "?branch=" + BRANCH + "&t=" + Date.now()
 				})
 			}
 
-			// Refresh badge on page load
+			// Fetch and display detailed workflow status
+			async function fetchWorkflowStatus() {
+				try {
+					const response = await fetch(
+						`https://api.github.com/repos/${GITHUB_REPO}/actions/workflows/${WORKFLOW_FILE}/runs?branch=${BRANCH}&per_page=1`
+					)
+					const data = await response.json()
+
+					if (data.workflow_runs && data.workflow_runs.length > 0) {
+						const latestRun = data.workflow_runs[0]
+						updateStatusIndicator(latestRun.status, latestRun.conclusion)
+						updateStatusMessage(latestRun)
+					}
+				} catch (error) {
+					console.error("Failed to fetch workflow status:", error)
+				}
+			}
+
+			function updateStatusIndicator(status, conclusion) {
+				const indicator = document.querySelector(".status-indicator")
+				const headingText = document.getElementById("status-heading-text")
+				indicator.className = "status-indicator"
+
+				let statusLabel = "GitHub Actions Workflow"
+
+				if (status === "in_progress" || status === "queued" || status === "waiting") {
+					indicator.classList.add("loading") // Orange for in progress
+					statusLabel = status === "queued" ? "⏳ Queued" : "🔄 Building Now"
+				} else if (conclusion === "success") {
+					indicator.classList.add("success") // Green for success
+					statusLabel = "✅ Build Successful"
+				} else if (conclusion === "failure") {
+					indicator.classList.add("failure") // Red for failure
+					statusLabel = "❌ Build Failed"
+				} else if (conclusion === "cancelled") {
+					indicator.classList.add("cancelled") // Gray for cancelled
+					statusLabel = "⚪ Build Cancelled"
+				}
+
+				if (headingText) {
+					headingText.textContent = statusLabel
+				}
+			}
+
+			function updateStatusMessage(run) {
+				const statusText = document.getElementById("live-status-text")
+				if (!statusText) return
+
+				const statusMap = {
+					queued: "⏳ Queued - Waiting to start",
+					in_progress: "🔄 In Progress - Building and deploying",
+					completed: run.conclusion === "success" ? "✅ Completed - Deployment successful" : "❌ Failed - Check logs",
+				}
+
+				const message = statusMap[run.status] || run.status
+				const timestamp = new Date(run.updated_at).toLocaleString()
+
+				statusText.innerHTML = `
+				<p><strong>Status:</strong> ${message}</p>
+				<p><strong>Last updated:</strong> ${timestamp}</p>
+				<p><strong>Run #:</strong> <a href="${run.html_url}" target="_blank" rel="noopener">${run.run_number}</a></p>
+			`
+			}
+
+			// Initial load
 			refreshBadge()
+			fetchWorkflowStatus()
 
-			// Optional: Auto-refresh the entire page every 30 seconds
-			// Uncomment the line below to enable auto-refresh
-			// setInterval(() => location.reload(), AUTO_REFRESH_INTERVAL);
+			// Refresh badge every 10 seconds
+			setInterval(refreshBadge, 10000)
 
-			// Refresh just the badge every 15 seconds (less intrusive)
-			setInterval(refreshBadge, 15000)
+			// Refresh workflow status every 15 seconds
+			setInterval(fetchWorkflowStatus, 15000)
 		</script>
 	</body>
 </html>
