@@ -1,0 +1,34 @@
+{
+  "routes": [
+    {
+      "route": "/api/*",
+      "allowedRoles": [
+        "anonymous"
+      ]
+    }
+  ],
+  "navigationFallback": {
+    "rewrite": "/api/redirect",
+    "exclude": [
+      "/_nuxt/*",
+      "/images/*",
+      "/css/*",
+      "/*.ico",
+      "/*.png",
+      "/*.jpg",
+      "/*.jpeg",
+      "/*.gif",
+      "/*.svg",
+      "/*.js",
+      "/*.css",
+      "/*.woff",
+      "/*.woff2",
+      "/*.ttf",
+      "/*.eot",
+      "/*.html"
+    ]
+  },
+  "platform": {
+    "apiRuntime": "node:18"
+  }
+}
