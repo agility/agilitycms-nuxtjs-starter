@@ -26,6 +26,25 @@ jobs:
           lfs: false
       - name: Fix git permissions
         run: sudo chown -R $USER:$USER .
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18"
+          cache: "npm"
+
+      - name: Cache Agility CMS & Nuxt
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules/.cache
+            node_modules/@agility/.cache
+            .nuxt
+          key: ${{ runner.os }}-agility-nuxt-${{ hashFiles('**/package-lock.json') }}-${{ github.run_id }}
+          restore-keys: |
+            ${{ runner.os }}-agility-nuxt-${{ hashFiles('**/package-lock.json') }}-
+            ${{ runner.os }}-agility-nuxt-
+
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
