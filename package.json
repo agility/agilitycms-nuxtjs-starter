@@ -12,11 +12,12 @@
 	},
 	"scripts": {
 		"dev": "nuxt",
-		"prebuild": "node scripts/generate-static-web-app-config.js",
 		"build": "nuxt build",
-		"pregenerate": "node scripts/generate-static-web-app-config.js",
 		"generate": "nuxt generate",
-		"start": "nuxt start"
+		"start": "nuxt start",
+		"prebuild": "node scripts/generate-static-web-app-config.js",
+		"pregenerate": "node scripts/generate-static-web-app-config.js",
+		"dev:swa": "swa start http://localhost:3000 --api-location ./api"
 	},
 	"dependencies": {
 		"@agility/agilitycms-nuxt-module": "^1.0.14",

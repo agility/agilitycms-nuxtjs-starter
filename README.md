@@ -68,7 +68,55 @@ When running your site in `production` mode, you will see the published from the
 
 Nuxt.js allows you to deploy your site as a `statically generated` site or as a `server-side rendered` site.
 
+### Recommended Platforms
+
+- **Vercel** - Optimized for Nuxt.js with best-in-class SSR and static generation. [Deploy to Vercel](https://vercel.com)
+- **Netlify** - Great support for static generation with native redirect handling. [Deploy to Netlify](https://netlify.com)
+- **Azure Static Web Apps** - Enterprise option with serverless functions for dynamic features. See [Azure Static Web Apps Setup](#azure-static-web-apps-optional) below.
+
 [Deploying your Nuxt.js Site](https://help.agilitycms.com/hc/en-us/articles/360060102952)
+
+## Azure Static Web Apps (Optional)
+
+This starter includes optional support for deploying to **Azure Static Web Apps** with dynamic URL redirects handled by serverless Azure Functions.
+
+### Setup for Azure Static Web Apps
+
+If you plan to deploy to Azure Static Web Apps:
+
+1. Install the SWA CLI and dependencies (optional, only if using Azure Static Web Apps):
+
+   ```bash
+   npm install -D @azure/static-web-apps-cli concurrently dotenv
+   ```
+
+2. The pre-build script will automatically generate redirects from Agility CMS and create the required configuration files:
+
+   - `staticwebapp.config.json` - Azure SWA routing configuration
+   - `api/redirects.json` - Generated list of all redirects from your CMS
+   - `api/redirect/index.js` - Azure Function that handles redirect matching
+
+3. **Important:** Add your Agility CMS credentials to `.env`:
+   ```
+   AGILITY_GUID=your-guid
+   AGILITY_API_FETCH_KEY=your-api-key
+   ```
+
+### Local Development with Azure Static Web Apps Emulation
+
+To test your site locally with Azure Static Web Apps emulation:
+
+```bash
+# Terminal 1: Start Nuxt dev server
+npm run dev
+
+# Terminal 2: Start SWA CLI (in a new terminal)
+npm run dev:swa
+```
+
+Then visit `http://localhost:4280` to see your site with Azure Static Web Apps routing rules applied.
+
+**Note:** The pre-build script runs automatically before `npm run build` or `npm run generate` and fetches all redirects from Agility CMS. This handles the 20KB size limit of `staticwebapp.config.json` by storing redirects in a separate JSON file and using an Azure Function to serve them dynamically at runtime.
 
 ## Notes
 
