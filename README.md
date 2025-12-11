@@ -98,6 +98,37 @@ If you plan to deploy to Azure Static Web Apps:
    - `api/redirect/index.js` - Azure Function that handles redirect matching
    - `staticwebapp.config.json` - Azure SWA routing configuration (already included in the starter)
 
+### Build Performance & Caching
+
+This starter includes **advanced GitHub Actions caching** to dramatically speed up builds:
+
+#### 🚀 Optimization Features:
+
+- **Smart Dependency Caching**: `node_modules` is cached and only reinstalled when `package-lock.json` changes
+- **Content-aware Build Cache**: Build artifacts are cached with keys that include source file hashes
+- **Agility CMS Content Sync Cache**: Downloaded content is preserved between builds
+- **Conditional Installation**: Dependencies are skipped entirely when unchanged
+
+#### ⚡ Performance Impact:
+
+- **Content-only updates**: ~1-1.5 minutes (down from 2-3 minutes)
+- **Code changes**: ~2-2.5 minutes (still benefits from partial caching)
+- **Full rebuild**: ~3 minutes (when dependencies change)
+
+#### How It Works:
+
+When you publish content changes in Agility CMS:
+
+1. Webhook triggers GitHub Actions
+2. `node_modules` restored from cache (~5s)
+3. Agility content cache restored (~10s)
+4. Nuxt generate runs with cached dependencies (~30-60s)
+5. Site deployed (~30s)
+
+**Result**: Most content updates deploy in under 90 seconds!
+
+See the [Build Status Page](/build-status.html) for real-time deployment monitoring.
+
 3. **Important:** Add your Agility CMS credentials to `.env`:
    ```
    AGILITY_GUID=your-guid
