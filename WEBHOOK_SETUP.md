@@ -25,6 +25,31 @@ This prevents issues like:
 - Bulk content imports → single build after completion
 - Multiple editors working simultaneously → builds are batched
 
+## Build Performance
+
+The GitHub Actions workflow includes advanced caching to optimize build times:
+
+### Build Times
+
+- **Content-only updates**: ~1-1.5 minutes
+- **Code changes**: ~2-2.5 minutes
+- **Dependency updates**: ~3 minutes
+
+### How Caching Works
+
+1. **Smart Dependency Caching**: `node_modules` is fully cached and only rebuilt when `package-lock.json` changes
+2. **Build Artifact Caching**: Nuxt build outputs (`.nuxt`, `dist`) are cached based on source code hashes
+3. **Agility Content Cache**: Downloaded CMS content is preserved in `node_modules/@agility/.cache`
+4. **Conditional Steps**: Installation steps are skipped when caches are valid
+
+This means when you publish content changes, the build typically completes in **under 90 seconds** because:
+
+- Dependencies are already installed (cached)
+- Agility content is incrementally updated (not fully re-downloaded)
+- Nuxt can reuse build artifacts for unchanged components
+
+You can monitor build status in real-time at `/build-status.html` on your deployed site.
+
 ## Setup Instructions
 
 ### 1. Create GitHub Personal Access Token

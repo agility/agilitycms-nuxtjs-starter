@@ -89,7 +89,6 @@ async function generateRedirects() {
 					statusCode: redirect.statusCode || 301,
 				};
 
-				console.log(`   ${redirect.originUrl} → ${redirectEntry.originUrl} → ${redirectEntry.destinationUrl} (${redirectEntry.statusCode})`);
 				redirects.push(redirectEntry);
 			}
 		}
